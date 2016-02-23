@@ -1,0 +1,49 @@
+==== VM images and configs for fast-vm ====
+Images can be downloaded from https://ssl.famera.cz/large_data/fast-vm-images/
+
+== Image drive layout
+- 10 GB drive
+  - default_size /boot
+  - LVM name (cXvg, where X is 5,6 or 7 accortding to RHEL/CentOS version)
+    - 256MB swap_lv
+    - 5000MB root_lv
+    - rest is free space on VG rXvg
+
+== Image HW
+- no graphic card
+- serial console configured for system and grub
+- root password: testtest
+- hostname configured according to VM_NAME from fast-vm
+- systems installed using minimal option where available (rhel5 with many disabled options, check *.ks file for details)
+- systems would be running for the first time after installation
+- disk drive connection:
+  - RHEL 5.0 - 6.2 - IDE drive (lack of virtio SCSI support in OS)
+  - RHEL 6.3 - 7.2 - SCSI drive using virtio SCSI controller (supports TRIM)
+
+==== How to install ====
+example of 5.11 image import
+
+1. run image import with fast-vm
+  # fast-vm import_image 5.11 rhel-5.11.img.gz rhel-5.0-6.2.xml rhel-5-hacks.sh
+
+## recommended further steps
+
+2. create base image VM
+  # fast-vm create 5.11 base
+
+3. run manually base image VM and customize it to your liking
+  # virsh start fastvm-5.11
+  # virsh console fastvm-5.11
+  (optional) change root password
+  (optional) add your ssh key for easier SSH login
+  ...
+
+4. shutdown base image VM 
+
+
+==== TODO ====
+Add missing versions, as this was initially created for RHEL systems, but should 
+apply for all CentOS systems as well
+
+==== Author ====
+Onderj Famera <ondrej-xa2iel8u@famera.cz>
