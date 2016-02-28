@@ -1,18 +1,26 @@
 ==== VM images and configs for fast-vm ====
 Images can be downloaded from https://ssl.famera.cz/large_data/fast-vm-images/
 
-== Image drive layout
+== Image drive layout (CentOS/RHEL)
 - 10 GB drive
   - default_size /boot
-  - LVM name (cXvg, where X is 5,6 or 7 accortding to RHEL/CentOS version)
+  - LVM name (cXvg, where X is 5,6 or 7 accortding to RHEL/CentOS major version)
     - 256MB swap_lv
     - 5000MB root_lv
-    - rest is free space on VG rXvg
+    - rest is free space on VG cXvg
+
+== Image drive layout (Ubuntu server)
+- 10 GB drive
+  - default_size /boot
+  - LVM name (uXXYY, for. example Ubuntu 14.04 will have VG name u1404)
+    - 256MB swap_lv
+    - 5GB root_lv
+    - rest is free space on VG uXXYY
 
 == Image HW
 - no graphic card
 - serial console configured for system and grub
-- root password: testtest
+- root password: testtest (for ubuntu systems use user 'myroot' with password 'testtest'
 - hostname configured according to VM_NAME from fast-vm
 - systems installed using minimal option where available (rhel5 with many disabled options, check *.ks file for details)
 - systems would be running for the first time after installation
