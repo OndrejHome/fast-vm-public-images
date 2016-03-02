@@ -1,15 +1,68 @@
 ==== VM images and configs for fast-vm ====
+Publicaly available images of some popular systems in typicaly minimal configuration
+with serial console.
+
 Images can be downloaded from https://ssl.famera.cz/large_data/fast-vm-images/
 
-== Image drive layout (CentOS/RHEL)
+
+==== How to install ====
+Example of centos-6.7 image import.
+
+1. Download image from https://ssl.famera.cz/large_data/fast-vm-images/centos-6.7.img.gz
+
+2. Run image import with fast-vm
+  # fast-vm import_image c6.7 cenos-6.7.img.gz centos-6.3-7.2.xml centos-6-hacks.sh
+
+## (optional) recommended further steps
+
+3. Create base image VM
+  # fast-vm create c6.7 base
+
+4. Run manually base image VM and customize it to your liking
+  # virsh start fastvm-c6.7
+  # virsh console fastvm-c6.7
+  (optional) change root password
+  (optional) add your ssh key for easier SSH login
+  ...
+
+4. Shutdown base image VM
+
+
+==== Provided configurations in this repository ====
+== CentOS
+## Login information
+# user: root
+# pass: testtest
+- SSH enabled on boot with root login
+## System details
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- system installed using minimal option where available (check *.ks file for details)
+- system would be running for the first time after installation
+- disk drive connection:
+  - CentOS 6.3 - 7.2 - SCSI drive using virtio SCSI controller (supports TRIM)
+## Drive layout
 - 10 GB drive
   - default_size /boot
-  - LVM name (cXvg, where X is 5,6 or 7 accortding to RHEL/CentOS major version)
+  - LVM name (cXvg, where X is 5,6 or 7 according to CentOS major version)
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG cXvg
 
-== Image drive layout (Ubuntu server)
+== Ubuntu server
+## Login information
+# user: myroot
+# pass: testtest
+- 'myroot' can become root through sudo
+## System details
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- system installed using minimal option with 'OpenSSH server' group enabled
+- system would be running for the first time after installation
+- disk drive connection - SCSI drive using virtio SCSI controller (supports TRIM)
+## Drive layout
 - 10 GB drive
   - default_size /boot
   - LVM name (uXXYY, for. example Ubuntu 14.04 will have VG name u1404)
@@ -17,41 +70,6 @@ Images can be downloaded from https://ssl.famera.cz/large_data/fast-vm-images/
     - 5GB root_lv
     - rest is free space on VG uXXYY
 
-== Image HW
-- no graphic card
-- serial console configured for system and grub
-- root password: testtest (for ubuntu systems use user 'myroot' with password 'testtest'
-- hostname configured according to VM_NAME from fast-vm
-- systems installed using minimal option where available (rhel5 with many disabled options, check *.ks file for details)
-- systems would be running for the first time after installation
-- disk drive connection:
-  - RHEL 5.0 - 6.2 - IDE drive (lack of virtio SCSI support in OS)
-  - RHEL 6.3 - 7.2 - SCSI drive using virtio SCSI controller (supports TRIM)
-
-==== How to install ====
-example of 5.11 image import
-
-1. run image import with fast-vm
-  # fast-vm import_image 5.11 rhel-5.11.img.gz rhel-5.0-6.2.xml rhel-5-hacks.sh
-
-## recommended further steps
-
-2. create base image VM
-  # fast-vm create 5.11 base
-
-3. run manually base image VM and customize it to your liking
-  # virsh start fastvm-5.11
-  # virsh console fastvm-5.11
-  (optional) change root password
-  (optional) add your ssh key for easier SSH login
-  ...
-
-4. shutdown base image VM 
-
-
-==== TODO ====
-Add missing versions, as this was initially created for RHEL systems, but should 
-apply for all CentOS systems as well
 
 ==== Author ====
 Onderj Famera <ondrej-xa2iel8u@famera.cz>
