@@ -20,5 +20,5 @@ rm $TTYS0_FILE
 virt-edit -d $VM_NAME -m /dev/u1404vg/root_lv -m /dev/sda1:/boot /etc/network/interfaces -e "s/inet loopback/inet loopback\nauto eth0\niface eth0 inet dhcp/"
 
 ## hostname
-VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/')
+VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
 virt-edit -d $VM_NAME -m /dev/u1404vg/root_lv -m /dev/sda1:/boot /etc/hostname -e "s/.*/$VM_HOSTNAME/"

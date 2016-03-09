@@ -8,5 +8,5 @@ virt-edit -d $VM_NAME -m /dev/c7vg/root_lv -m /dev/sda1:/boot /etc/default/grub 
 virt-edit -d $VM_NAME -m /dev/c7vg/root_lv -m /dev/sda1:/boot /etc/sysconfig/network-scripts/ifcfg-eth0 -e "s/ONBOOT=no/ONBOOT=yes/"
 
 ## hostname
-VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./_/')
+VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
 virt-edit -d $VM_NAME -m /dev/c7vg/root_lv -m /dev/sda1:/boot /etc/hostname -e "s/.*/$VM_HOSTNAME/"
