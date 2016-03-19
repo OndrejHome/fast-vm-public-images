@@ -1,5 +1,8 @@
 #!/bin/bash
 
+## using direct backend to avoid selinux issues on fedora for now
+export LIBGUESTFS_BACKEND=direct
+
 ## serial console grub config
 virt-edit --connect qemu:///system -d $VM_NAME -m /dev/c6vg/root_lv -m /dev/sda1:/boot /boot/grub/grub.conf -e "s/default=0$/default=0 #edited\nserial --unit=0 --speed=115200 --word=8 --parity=no\nterminal --timeout=5 serial console/; s/^hiddenmenu/#hiddenmenu/; s/^splashimage/#splashimage/; s/rhgb quiet/console=ttyS0,115200n8/"
 
