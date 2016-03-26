@@ -70,6 +70,12 @@ Example of centos-6.7 image import.
     - 5GB root_lv
     - rest is free space on VG uXXYY
 
+==== *-hacks-extra.sh ====
+- scripts with extended configuration options compatible with fast-vm 0.4+
+- currently changes following behaviour:
+  - custom root password
+  - preloaded SSH key for root SSH access
+  - change of grub timeout
 
 ==== Author ====
 Onderj Famera <ondrej-xa2iel8u@famera.cz>
