@@ -65,10 +65,10 @@ Example of centos-6.7 image import.
 ## Drive layout
 - 10 GB drive
   - default_size /boot
-  - LVM name (uXXYY, for. example Ubuntu 14.04 will have VG name u1404)
+  - LVM name (uXXYYvg, for. example Ubuntu 14.04 will have VG name u1404vg)
     - 256MB swap_lv
     - 5GB root_lv
-    - rest is free space on VG uXXYY
+    - rest is free space on VG uXXYYvg
 
 == Fedora
 ## Login information
