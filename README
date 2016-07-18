@@ -9,7 +9,15 @@ Images can be downloaded from https://ssl.famera.cz/large_data/fast-vm-images/
 <distribution name>/hacks/*hacks.sh       - fast-vm standard hack files
 <distribution name>/hacks/*hacks-extra.sh - fast-vm special hack files
 
-==== How to install ====
+==== Installation ====
+To use the hack files included in this repository you would need command
+'guestfish' to be present and working on your system. In RPM based systems
+like Fedora/RHEL/Centos you can install it using command below.
+
+  # yum install libguestfs-tools-c
+  # dnf install libguestfs-tools-c
+
+==== How to use these images ====
 Example of centos-6.7 image import.
 
 1. Download image from https://ssl.famera.cz/large_data/fast-vm-images/centos-6.7.img.gz
@@ -29,7 +37,7 @@ Example of centos-6.7 image import.
   (optional) add your ssh key for easier SSH login
   ...
 
-4. Shutdown base image VM
+5. Shutdown base image VM
 
 
 ==== Provided configurations in this repository ====
