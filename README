@@ -17,6 +17,14 @@ like Fedora/RHEL/Centos you can install it using command below.
   # yum install libguestfs-tools-c
   # dnf install libguestfs-tools-c
 
+==== UEFI support ( from fast-vm-1.0 )====
+For images with UEFI support you will need OVMF UEFI firmware and UEFI variables.
+These should be present on the paths below:
+  - /usr/share/OVMF/OVMF_CODE.fd  (UEFI firmware)
+  - /usr/share/OVMF/OVMF_VARS.fd  (UEFI variables)
+The UEFI variables file is used as template for creating per-machine nvram file
+with variables automatically by libvirt (check /etc/libvirt/qemu.conf for more detail).
+
 ==== How to use these images ====
 Example of centos-6.7 image import.
 
@@ -57,7 +65,15 @@ Example of centos-6.7 image import.
   - CentOS 6.3 - 7.2 - SCSI drive using virtio SCSI controller (supports TRIM)
 ## Drive layout
 - 10 GB drive
-  - default_size /boot
+(non-UEFI version)
+  - default_size /boot (1st partition)
+  - LVM name (cXvg, where X is 5,6 or 7 according to CentOS major version)
+    - 256MB swap_lv
+    - 5000MB root_lv
+    - rest is free space on VG cXvg
+(UEFI version)
+  - default_size /boot/efi (1st partition)
+  - default_size /boot (2nd partition)
   - LVM name (cXvg, where X is 5,6 or 7 according to CentOS major version)
     - 256MB swap_lv
     - 5000MB root_lv
