@@ -31,7 +31,7 @@ Example of centos-6.7 image import.
 1. Download image from https://ssl.famera.cz/large_data/fast-vm-images/centos-6.7.img.gz
 
 2. Run image import with fast-vm
-  # fast-vm import_image c6.7 cenos-6.7.img.gz centos-6.3-7.2.xml centos-6-hacks.sh
+  # fast-vm import_image c6.7 centos-6.7.img.gz centos-6.3-7.2.xml centos-6-hacks.sh
 
 ## (optional) recommended further steps
 
@@ -74,7 +74,7 @@ Example of centos-6.7 image import.
 (UEFI version)
   - default_size /boot/efi (1st partition)
   - default_size /boot (2nd partition)
-  - LVM name (cXvg, where X is 5,6 or 7 according to CentOS major version)
+  - LVM name (cXvg, where X is 6 or 7 according to CentOS major version)
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG cXvg
