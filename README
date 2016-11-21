@@ -97,8 +97,16 @@ Example of centos-6.7 image import.
   - RHEL 6.3 - 7.2 - SCSI drive using virtio SCSI controller (supports TRIM)
 ## Drive layout
 - 10 GB drive
-  - default_size /boot
+(non-UEFI version)
+  - default_size /boot (1st partition)
   - LVM name (rXvg, where X is 5, 6 or 7, according to RHEL major version)
+    - 256MB swap_lv
+    - 5000MB root_lv
+    - rest is free space on VG rXvg
+(UEFI version)
+  - default_size /boot/efi (1st partition)
+  - default_size /boot (2nd partition)
+  - LVM name (rXvg, where X is 6 or 7 according to RHEL major version)
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG rXvg
