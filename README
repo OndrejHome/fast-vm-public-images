@@ -7,6 +7,8 @@ Images can be downloaded from https://ssl.famera.cz/large_data/fast-vm-images/
 ==== Structure of this repository ====
 <distribution name>/xml/*.xml             - libvirt XML files for fast-vm
 <distribution name>/hacks/*hacks.sh       - fast-vm standard hack files
+<distribution name>/xml/*-uefi.xml        - UEFI libvirt XML files for fast-vm
+<distribution name>/hacks/*hacks-uefi.sh  - UEFI fast-vm standard hack files
 <distribution name>/hacks/*hacks-extra.sh - fast-vm special hack files
 
 ==== Installation ====
