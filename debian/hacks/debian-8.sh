@@ -1,4 +1,10 @@
 #!/bin/bash
+## test if guestfish command is present
+which guestfish 2>&1 > /dev/null
+if [ "$?" != 0 ]; then
+	echo "[!!!] Command 'guestfish' not found (Install it!). Making changes to VM FAILED."
+	exit 1
+fi
 
 ## using direct backend to avoid selinux issues on fedora for now
 export LIBGUESTFS_BACKEND=direct
