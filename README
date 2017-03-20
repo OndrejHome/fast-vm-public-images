@@ -175,6 +175,16 @@ Example of centos-6.7 image import.
     - 5GB root_lv
     - rest is free space on VG debianXvg
 
+== Gentoo (preview)
+## Login information
+# user: root
+# pass: testtest
+## System details
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- SSH server activated and root login with password permitted
+
 ==== *-hacks-extra.sh ====
 - scripts with extended configuration options compatible with fast-vm 0.4+
 - currently changes following behaviour:
