@@ -2,7 +2,11 @@
 Publicaly available images of some popular systems in typicaly minimal configuration
 with serial console.
 
-Images can be downloaded from https://ssl.famera.cz/large_data/fast-vm-images/
+Images can be downloaded from following locations:
+Primary location (slow - only 10 Mbit/s)
+  - https://www.famera.cz/large_data/fast-vm-images/
+Mirror locations (fast - up to 10000 Mbit/s)
+  - http://ftp.linux.cz/pub/linux/people/ondrej_famera/fastvm-images/
 
 ==== Structure of this repository ====
 <distribution name>/xml/*.xml             - libvirt XML files for fast-vm
