@@ -19,8 +19,8 @@ zerombr
 clearpart --none --drives=sda
 
 part /boot --fstype=ext4 --size=500
-part pv.008002 --grow --size=1
-volgroup c6vg --pesize=4096 pv.008002
+part pv.1 --grow --size=1
+volgroup c6vg --pesize=4096 pv.1
 logvol swap --name=swap_lv --vgname=c6vg --size=256
 logvol / --fstype=ext4 --name=root_lv --vgname=c6vg --size=5000
 

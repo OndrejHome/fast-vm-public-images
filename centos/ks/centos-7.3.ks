@@ -30,11 +30,11 @@ bootloader --append=" crashkernel=auto" --location=mbr --boot-drive=sda
 # Partition clearing information
 clearpart --none --initlabel
 # Disk partitioning information
-part pv.155 --fstype="lvmpv" --ondisk=sda --size=5259
+part pv.1 --fstype="lvmpv" --ondisk=sda --size=1 --grow
 part /boot --fstype="xfs" --ondisk=sda --size=1024
-volgroup c7vg --pesize=4096 pv.155
+volgroup c7vg --pesize=4096 pv.1
 logvol swap  --fstype="swap" --size=256 --name=swap_lv --vgname=c7vg
-logvol /  --fstype="xfs" --size=5000 --name=root_lv --vgname=c7vg
+logvol /  --fstype="xfs" --size=4000 --name=root_lv --vgname=c7vg
 
 %packages
 @^minimal
