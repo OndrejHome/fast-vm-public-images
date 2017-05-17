@@ -28,6 +28,9 @@ poweroff
 
 %packages --nobase
 @Core
-@server-policy
-@workstation-policy
+%end
+
+%post --nochroot
+/mnt/sysimage/sbin/fstrim /mnt/sysimage
+/mnt/sysimage/sbin/fstrim /mnt/sysimage/boot
 %end
