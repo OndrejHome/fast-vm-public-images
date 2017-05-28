@@ -10,7 +10,7 @@ firewall --service=ssh
 authconfig --enableshadow --passalgo=sha512
 selinux --enforcing
 timezone --utc Europe/Prague
-bootloader --location=mbr --driveorder=sda --append="crashkernel=auto rhgb quiet"
+bootloader --location=mbr --driveorder=sda --append="crashkernel=128M"
 # The following is the partition information you requested
 # Note that any partitions you deleted are not expressed
 # here so unless you clear all partitions first, this is
