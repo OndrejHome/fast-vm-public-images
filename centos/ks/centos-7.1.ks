@@ -26,7 +26,7 @@ skipx
 # System timezone
 timezone Europe/Prague --isUtc --nontp
 # System bootloader configuration
-bootloader --append=" crashkernel=auto" --location=mbr --boot-drive=sda
+bootloader --location=mbr --boot-drive=sda
 # Partition clearing information
 clearpart --none --initlabel
 # Disk partitioning information
@@ -43,14 +43,8 @@ kexec-tools
 
 %end
 
-%addon com_redhat_kdump --enable --reserve-mb='auto'
+%addon com_redhat_kdump --enable --reserve-mb='128M'
 
-%end
-
-%anaconda
-pwpolicy root --minlen=6 --minquality=50 --notstrict --nochanges --notempty
-pwpolicy user --minlen=6 --minquality=50 --notstrict --nochanges --notempty
-pwpolicy luks --minlen=6 --minquality=50 --notstrict --nochanges --notempty
 %end
 
 %post --nochroot
