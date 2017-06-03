@@ -35,7 +35,7 @@ part pv.1 --fstype="lvmpv" --ondisk=sda --size=1 --grow
 part /boot --fstype="xfs" --ondisk=sda --size=500
 volgroup c7vg --pesize=4096 pv.1
 logvol swap  --fstype="swap" --size=256 --name=swap_lv --vgname=c7vg
-logvol /  --fstype="xfs" --size=4000 --name=root_lv --vgname=c7vg
+logvol /  --fstype="xfs" --size=5000 --name=root_lv --vgname=c7vg
 
 %packages
 @^minimal
