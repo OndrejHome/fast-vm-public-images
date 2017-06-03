@@ -1,0 +1,20 @@
+== Fedora
+## Login information
+# user: root
+# pass: testtest
+- SSH enabled on boot with root login
+## System details
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- system installed using minimal option where available (check *.ks file for details)
+- system would be running for the first time after installation
+- disk drive connection:
+  - Fedora 22+ - SCSI drive using virtio SCSI controller (supports TRIM)
+## Drive layout
+- 10 GB drive
+  - default_size /boot
+  - LVM name (fXX, where XX is Fedora release number )
+    - 256MB swap_lv
+    - 5000MB root_lv
+    - rest is free space on VG fXX

@@ -1,0 +1,9 @@
+== Gentoo (preview)
+## Login information
+# user: root
+# pass: testtest
+## System details
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- SSH server activated and root login with password permitted

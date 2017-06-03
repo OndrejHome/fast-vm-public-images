@@ -1,0 +1,20 @@
+== Ubuntu server
+## Login information
+# user: myroot
+# pass: testtest
+- 'myroot' can become root through sudo
+## System details
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- system installed using minimal option with 'OpenSSH server' group enabled
+- system would be running for the first time after installation
+- disk drive connection - SCSI drive using virtio SCSI controller (supports TRIM)
+## Drive layout
+- 10 GB drive
+  - default_size /boot
+  - LVM name (uXXYYvg, for. example Ubuntu 14.04 will have VG name u1404vg)
+    - 256MB swap_lv
+    - 5GB root_lv
+    - rest is free space on VG uXXYYvg
+
