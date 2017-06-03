@@ -58,5 +58,11 @@ Example of CentOS 7.3 image import.
 3. Now you are ready to go to create a new fast-vm VM based on image you have imported
   # fast-vm create c7.3 42
 
+==== How to contribute ====
+Check the CONTRIBUTE files for more information.
+
+==== Issues, Bugs, RFEs, questions, ... ====
+Email author or open Issue on github for this repository.
+
 ==== Author ====
 Onderj Famera <ondrej-xa2iel8u@famera.cz>

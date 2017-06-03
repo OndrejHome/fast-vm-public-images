@@ -1,0 +1,21 @@
+=== How to contribute your images and to this repository ===
+If you have created your own custom image and would like to share
+it with other this is a starting place where to request the addition
+of the XML definition, hack files, kickstart (or other bootstraping) files.
+
+To contribute to this repository please follow rules below:
+
+  1. Fork the repository and add files to places where they logicaly belong.
+  (if you are providing files for completely new distribution then create new directory
+  structure for it based on how the structure of other distributions)
+
+  2. Update README of distribution where you will provide files and ensure 
+  that it contains information about image that you are adding.
+  Include at minimum:
+  - way how to login into system and 
+  - where your image can be obtained
+  (If your image cannot be publicly obtained, then try to create kickstart or other bootstrap
+  files so people that can access the media of distribution can generate image by themselves)
+
+  3. To request inclusion of files create a pull request on GitHub or get in touch with author
+  via email (ondrej-xa2iel8u@famera.cz) if you prefer not to use GitHub.
