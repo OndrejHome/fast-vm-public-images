@@ -17,15 +17,21 @@
 ## Drive layout
 - 10 GB drive
 (non-UEFI version)
-  - default_size /boot (1st partition)
+  - 500MB /boot (1st partition)
   - LVM name (rXvg, where X is 5, 6 or 7, according to RHEL major version)
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG rXvg
 (UEFI version)
-  - default_size /boot/efi (1st partition)
-  - default_size /boot (2nd partition)
+  - 200MB /boot/efi (1st partition)
+  - 500MB /boot (2nd partition)
   - LVM name (rXvg, where X is 6 or 7 according to RHEL major version)
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG rXvg
+
+ == RHEL 6.X UEFI ==
+ - these images requires installation-specific nvram for proper function
+   - the nvram must be available at following location /etc/fast-vm/nvram-${image_name}_VARS.fd
+   - system won't boot without nvram!
+ - provided libvirt XML is supported from fast-vm 1.2
