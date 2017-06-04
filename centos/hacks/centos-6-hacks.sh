@@ -14,6 +14,8 @@ guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/c6vg/root_lv -m /dev/sda1:/boo
 sh 'sed -i "s/HWADDR=.*$/HWADDR=${VM_MAC}/; s/ONBOOT=no/ONBOOT=yes/" /etc/sysconfig/network-scripts/ifcfg-eth0'
 sh 'sed -i "s/default=0$/default=0 #edited\nserial --unit=0 --speed=115200 --word=8 --parity=no\nterminal --timeout=5 serial console/; s/^hiddenmenu/#hiddenmenu/; s/^splashimage/#splashimage/; s/rhgb quiet/console=ttyS0,115200n8/; s/crashkernel=auto/crashkernel=128M/" /boot/grub/grub.conf'
 sh 'sed -i "s/HOSTNAME=.*$/HOSTNAME=$VM_HOSTNAME/" /etc/sysconfig/network'
+# CentOS 6.4, 6.4, 6.5 contained broken line in 'file_contexts' file, this removes it so we can apply other selinux labels
+sh 'sed -i "/\\pid/d" /etc/selinux/targeted/contexts/files/file_contexts'
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/selinux/targeted/contexts/files/file_contexts
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-eth0
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /boot/grub/grub.conf
