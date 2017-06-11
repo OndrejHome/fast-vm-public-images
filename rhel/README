@@ -12,17 +12,24 @@
 - systems installed using minimal option where available (rhel5 with many disabled options, check *.ks file for details)
 - system would be running for the first time after installation
 - disk drive connection:
-  - RHEL 5.0 - 6.2 - IDE drive (lack of virtio SCSI support in OS)
+  - RHEL 5.6, 6.0 - lsilogic SCSI controler (lsisas1078 is crashing installer kernel for these versions)
+  - RHEL 5.0 - 5.5, 5.7 - 5.11, 6.1, 6.2 - lsisas1078 (megaraid) SCSI constroler with SCSI drive
   - RHEL 6.3 - 7.3 - SCSI drive using virtio SCSI controller (supports TRIM)
 ## Drive layout
-- 10 GB drive
-(non-UEFI version)
+- 6 GB drive
+(RHEL 5)
+  - 100MB /boot (1st partition)
+  - LVM name (r5vg)
+    - 256MB swap_lv
+    - 4992MB root_lv
+    - rest is free space on VG r5vg
+(RHEL 6,7 non-UEFI version)
   - 500MB /boot (1st partition)
   - LVM name (rXvg, where X is 5, 6 or 7, according to RHEL major version)
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG rXvg
-(UEFI version)
+(RHEL 6,7 UEFI version)
   - 200MB /boot/efi (1st partition)
   - 500MB /boot (2nd partition)
   - LVM name (rXvg, where X is 6 or 7 according to RHEL major version)
@@ -35,3 +42,7 @@
    - the nvram must be available at following location /etc/fast-vm/nvram-${image_name}_VARS.fd
    - system won't boot without nvram!
  - provided libvirt XML is supported from fast-vm 1.2
+
+ == kickstart KNOWN ISSUES ==
+ RHEL 6.3 installer is complaining about 'unsupported hardware' and needs manual step to continue
+ RHEL 6.0 installer is trying to get IP from DHCP even if it should do that and needs manual step to continue
