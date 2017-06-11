@@ -1,0 +1,27 @@
+== Windows
+
+= Windows Server 2008 R2 Enterprise Edition x64 (for evaluation purposes)
+Image file for this version can be obtained from Microsoft site but it is not permited
+to re-distribute it so here you will find only steps to take to create fast-vm image from it.
+
+1. Download and unpack the image provided by MIcrosoft as described in the page below
+  https://www.freeipa.org/page/Setting_up_Active_Directory_domain_for_testing_purposes#Download_and_unpack_original_images
+
+2. Convert image to RAW format
+  qemu-img convert -p -f vpc -O raw WS2008R2Fullx64Ent.vhd WS2008R2Fullx64Ent.img
+
+3. (Optional but recommended) Get gparted Live ISO and resize the NTFS partition inside. The one provided
+in the original image is over 120GB. Procedure will further assume that you have reduced the size of 'C:' drive
+filesystem to 19800MB
+
+4. If you have resized the filesystem in step 3 then also resize the raw image using command below.
+  qemu-img resize -f raw WS2008R2Fullx64Ent.img 20G
+
+5. Create custom fast-vm image with 20 GB disk and XML provided here
+   fast-vm import_custom_image 20 win2k8r2 empty xml/win2k8r2.xml
+
+6. (as root) copy the content of the image into new fast-vm image drive.
+   dd if=WS2008R2Fullx64Ent.img of=/dev/$THINPOOL_VG/${VM_PREFIX}win2k8r2 bs=1M conv=sparse status=progress
+
+After above procedure Create fast-vm VMs as you are used to with new image.
+  fast-vm create win2k8r2 42
