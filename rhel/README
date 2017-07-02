@@ -14,6 +14,7 @@
 - disk drive connection:
   - RHEL 5.6, 6.0 - lsilogic SCSI controler (lsisas1078 is crashing installer kernel for these versions)
   - RHEL 5.0 - 5.5, 5.7 - 5.11, 6.1, 6.2 - lsisas1078 (megaraid) SCSI constroler with SCSI drive
+  - (IDE) RHEL 5.0 - 6.2 - alternative images using IDE controller
   - RHEL 6.3 - 7.3 - SCSI drive using virtio SCSI controller (supports TRIM)
 ## Drive layout
 - 6 GB drive
