@@ -12,7 +12,7 @@ VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
 
 guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/r7vg/root_lv -m /dev/sda1:/boot --selinux <<EOF
 # enable eth0 adapter on boot
-sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/" /etc/sysconfig/network-scripts/ifcfg-eth0'
+sh 'sed -i "/HWADDR=52:54:00:00:BE:EF/d; s/ONBOOT=no/ONBOOT=yes/" /etc/sysconfig/network-scripts/ifcfg-eth0'
 # change the hostname of machine
 sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-eth0
