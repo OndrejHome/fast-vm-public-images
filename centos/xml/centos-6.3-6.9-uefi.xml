@@ -50,6 +50,7 @@
       <target type='serial' port='0'/>
     </console>
     <memballoon model='virtio'/>
+    <watchdog model='i6300esb' action='reset'/>
     <rng model='virtio'>
       <backend model='random'>/dev/random</backend>
     </rng>

@@ -4,6 +4,7 @@
 # pass: testtest
 - SSH enabled on boot with root login
 ## System details
+- emulated Intel 6300ESB WatchDog
 - no graphic card
 - serial console configured for system and grub
 - hostname configured according to VM_NAME from fast-vm
