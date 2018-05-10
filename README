@@ -19,15 +19,29 @@ media of these distributions.
 ==== System requirements ====
 To use the hack files included in this repository you would need command
 'guestfish' to be present and working on your system. In RPM based systems
-like Fedora/RHEL/Centos you can install it using command below.
+like Fedora/RHEL/Centos/Debian you can install it using command below.
 
   # yum install libguestfs-tools-c
   # dnf install libguestfs-tools-c
+  # apt-get install libguestfs-tools
 
 Distributions that uses SELinux will need 'libguestfs' version that contains command
 'selinux-relabel' for SELinux based hack files to work properly!
+
 On RHEL/CentOS system this is included in version 1.32 while in original 'libguestfs'
 packages this is available since version 1.34.
+
+On Debian you can use the prebuild libguestfs appliance from following URL
+http://download.libguestfs.org/binaries/appliance/
+Version 1.34 or later should be used. After downloading the archive unpack it to place
+where users that will use fast-vm can read it. To instruct libguestfs to use this appliance
+you need to export variable LIBGUESTFS_PATH with path to unpacked appliance.
+Best place for this is either users .bashrc or system-wide bashrc/enviromental config file.
+
+## Example in ~/.bashrc
+...
+export LIBGUESTFS_PATH=/var/tmp/appliance
+...
 
 ==== UEFI support ( from fast-vm-1.0 ) ====
 For images with UEFI support you will need OVMF UEFI firmware and UEFI variables.
