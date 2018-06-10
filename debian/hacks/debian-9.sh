@@ -11,10 +11,14 @@ export LIBGUESTFS_BACKEND=direct
 ## hostname
 VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
 
+# detect the slot where network card is as system uses hardware-based names for network interfaces
+net_card_slot=$(virsh --connect qemu:///system dumpxml $VM_NAME|xmllint --xpath "//interface[.//source[@network='fast-vm-nat']]/address/@slot" - 2>/dev/null|cut -d\" -f 2|head -1|cut -dx -f 2)
+net_card=$(($net_card_slot+0))
+
 guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/debian9vg/root -m /dev/sda1:/boot <<EOF
 sh 'sed -i "s/quiet/console=ttyS0,115200n8 /" /boot/grub/grub.cfg'
 sh 'sed -i "s/GRUB_CMDLINE_LINUX=\"\"/GRUB_CMDLINE_LINUX=\"console=ttyS0,115200n8\"/; s/GRUB_CMDLINE_LINUX_DEFAULT=\".*\"/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub'
-sh 'sed -i "s/inet loopback/inet loopback\nauto ens2\niface ens2 inet dhcp/" /etc/network/interfaces'
+sh 'sed -i "s/inet loopback/inet loopback\nauto ens${net_card}\niface ens${net_card} inet dhcp/" /etc/network/interfaces'
 sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
 sh 'sed -i "s/#PermitRootLogin.*/PermitRootLogin yes/" /etc/ssh/sshd_config'
 EOF
