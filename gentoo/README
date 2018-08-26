@@ -7,3 +7,13 @@
 - serial console configured for system and grub
 - hostname configured according to VM_NAME from fast-vm
 - SSH server activated and root login with password permitted
+- removed portage files and kernel sources (except of builded parts)
+
+Semi-automated installation of Gentoo based on work from https://github.com/sorah/gentoo-build
+TODO: make available config file.
+
+
+== List of use stage3 and portage releases used for images
+
+fast-vm image name  | stage3 version | portage-snapshot-version
+gentoo-gen-20180813 | 20180813       | 20180820
