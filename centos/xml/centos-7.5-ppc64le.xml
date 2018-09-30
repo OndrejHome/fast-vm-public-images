@@ -1,0 +1,48 @@
+<domain type='qemu'>
+  <name>VM_NAME</name>
+  <memory unit='KiB'>1048576</memory>
+  <currentMemory unit='KiB'>1048576</currentMemory>
+  <vcpu>2</vcpu>
+  <resource>
+    <partition>/machine</partition>
+  </resource>
+  <os>
+    <type arch='ppc64le' machine='pseries'>hvm</type>
+    <boot dev='hd'/>
+  </os>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>restart</on_crash>
+  <devices>
+    <disk type='block' device='disk'>
+      <driver name='qemu' type='raw' cache='none' io='native' discard='unmap'/>
+      <source dev='/dev/THINPOOL_VG/VM_NAME'/>
+      <target dev='sda' bus='scsi'/>
+    </disk>
+    <disk type='block' device='cdrom'>
+      <driver name='qemu'/>
+      <target dev='sdb' bus='scsi'/>
+      <readonly/>
+    </disk>
+    <controller type='scsi' index='0' model='virtio-scsi'/>
+    <controller type='pci' index='0' model='pci-root'>
+      <model name='spapr-pci-host-bridge'/>
+    </controller>
+    <interface type='network'>
+      <source network='LIBVIRT_NETWORK'/>
+      <model type='virtio'/>
+    </interface>
+    <serial type='pty'>
+      <target type='spapr-vio-serial' port='0'>
+        <model name='spapr-vty'/>
+      </target>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+    <memballoon model='virtio'/>
+    <panic model='pseries'/>
+  </devices>
+</domain>
+

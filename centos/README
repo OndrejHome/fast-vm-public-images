@@ -28,6 +28,13 @@
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG cXvg
+(PPC64LE version)
+  - 4MB PPC PReP Boot (1st partition)
+  - 500MB /boot (2nd partition)
+  - LVM name (cXvg, where X is 6 or 7 according to CentOS major version)
+    - 256MB swap_lv
+    - 5000MB root_lv
+    - rest is free space on VG cXvg
 
  == CentOS 6.X UEFI ==
  - these images requires installation-specific nvram for proper function
@@ -35,3 +42,7 @@
    - system won't boot without nvram!
    - nvrams are distributed next to image files
  - provided libvirt XML is supported from fast-vm 1.2
+
+ == CentOS 7.5 PPC64LE ==
+ - these iamges are intended for the qemu on x86_64 platform emulating PPC64LE
+ - no hackfile for these images is available yet so the hostname is fixed
