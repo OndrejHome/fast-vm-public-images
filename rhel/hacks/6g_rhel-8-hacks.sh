@@ -21,9 +21,9 @@ fi
 
 guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/r8vg/root_lv -m /dev/sda1:/boot --selinux <<EOF
 # enable eth0 adapter on boot
-sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/" /etc/sysconfig/network-scripts/ifcfg-enp0s2'
+sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/" /etc/sysconfig/network-scripts/ifcfg-ens2'
 # change the hostname of machine
 sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
-selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-enp0s2
+selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-ens2
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/hostname
 EOF

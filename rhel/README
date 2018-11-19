@@ -16,7 +16,7 @@
   - RHEL 5.6, 6.0 - lsilogic SCSI controler (lsisas1078 is crashing installer kernel for these versions)
   - RHEL 5.0 - 5.5, 5.7 - 5.11, 6.1, 6.2 - lsisas1078 (megaraid) SCSI constroler with SCSI drive
   - (IDE) RHEL 5.0 - 6.2 - alternative images using IDE controller
-  - RHEL 6.3 - 7.4 - SCSI drive using virtio SCSI controller (supports TRIM)
+  - RHEL 6.3 - 8.0 - SCSI drive using virtio SCSI controller (supports TRIM)
 ## Drive layout
 - 6 GB drive
 (RHEL 5)
@@ -25,13 +25,13 @@
     - 256MB swap_lv
     - 4992MB root_lv
     - rest is free space on VG r5vg
-(RHEL 6,7 non-UEFI version)
+(RHEL 6,7,8 non-UEFI version)
   - 500MB /boot (1st partition)
   - LVM name (rXvg, where X is 5, 6 or 7, according to RHEL major version)
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG rXvg
-(RHEL 6,7 UEFI version)
+(RHEL 6,7,8 UEFI version)
   - 200MB /boot/efi (1st partition)
   - 500MB /boot (2nd partition)
   - LVM name (rXvg, where X is 6 or 7 according to RHEL major version)
@@ -44,6 +44,16 @@
    - the nvram must be available at following location /etc/fast-vm/nvram-${image_name}_VARS.fd
    - system won't boot without nvram!
  - provided libvirt XML is supported from fast-vm 1.2
+
+== RHEL 8.X libguestfs requirements ==
+- RHEL 8.X uses a new features in XFS that some systems (RHEL/CentOS 7.x, libguestfs-appliance-1.38.0) don't have libguestfs appliance to handle such situation - state as of 19.11.2019 
+- this can be workarounded by using appliance from Fedora 29 that can be downloaded from http://ftp.linux.cz/pub/linux/people/ondrej_famera/fastvm-images/appliance-1.39.11.tar.xz
+- hack files contains check if running system is Fedora and if not they will try to use the custom Fedora 29 appliance in /var/tmp/fedora29/appliance
+= Fedora 29 custom appliance installation:
+  # mkdir /var/tmp/fedora29
+  # cd /var/tmp/fedora29
+  # wget http://ftp.linux.cz/pub/linux/people/ondrej_famera/fastvm-images/appliance-1.39.11.tar.xz
+  # tar xf appliance-1.39.11.tar.xz
 
  == kickstart KNOWN ISSUES ==
  RHEL 6.3 installer is complaining about 'unsupported hardware' and needs manual step to continue
