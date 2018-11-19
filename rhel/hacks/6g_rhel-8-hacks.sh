@@ -10,7 +10,16 @@ export LIBGUESTFS_BACKEND=direct
 ## hostname
 VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
 
-guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/r8vg/root_lv:/sysroot:rw:xfs -m /dev/sda1:/sysroot/boot:rw:xfs --selinux <<EOF
+if [ ! -f /etc/fedora-release ]; then
+        if [ -d /var/tmp/fedora29/appliance ]; then
+                export LIBGUESTFS_PATH=/var/tmp/fedora29/appliance
+        else
+                echo "[!!!] Non-Fedora systems needs a Fedora 29 (or newer) appliance in /var/tmp/fedora29/appliance to run"
+                exit 1
+        fi
+fi
+
+guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/r8vg/root_lv -m /dev/sda1:/boot --selinux <<EOF
 # enable eth0 adapter on boot
 sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/" /etc/sysconfig/network-scripts/ifcfg-enp0s2'
 # change the hostname of machine
