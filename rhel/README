@@ -67,6 +67,6 @@ with following properties:
 - eth0 - (DHCP) internal network connected to other fast-vm machines
 - eth1 - (DHCP) external network connected via 'system-bridge' and default route for system
 To import profile, make sure that you first imported some rhel-7.X image and then run following command to import profile
-  # fast-vm import_profile rhel-ext-7.X rhel-7.X https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/centos/xml/xml/rhel-ext-7.0-current.xml https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/centos/hacks/6g_rhel-ext-7-hacks.sh
+  # fast-vm import_profile rhel-ext-7.X rhel-7.X https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/rhel/xml/rhel-ext-7.0-current.xml https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/rhe/hacks/6g_rhel-ext-7-hacks.sh
 To create fast-vm VM with this configuration use the profile name as shown below
   # fast-vm create rhel-ext-7.X XX
