@@ -44,5 +44,18 @@
  - provided libvirt XML is supported from fast-vm 1.2
 
  == CentOS 7.5 PPC64LE ==
- - these iamges are intended for the qemu on x86_64 platform emulating PPC64LE
+ - these images are intended for the qemu on x86_64 platform emulating PPC64LE
  - no hackfile for these images is available yet so the hostname is fixed
+
+== CentOS 7 ext profiles
+For fast-vm hypervisors that have configured 'system-bridge' software bridge as
+described in the https://www.famera.cz/blog/fast-vm/user_guide.html#exposing-fast-vm-systems-to-external-network-via-bridge
+there is set of XML file and hack file that creates VM with 2 network interfaces
+with following properties:
+- eth0 - (DHCP) internal network connected to other fast-vm machines
+- eth1 - (DHCP) external network connected via 'system-bridge' and default route for system
+To import profile, make sure that you first imported some centos-7.X image and then run following command to import profile
+  # fast-vm import_profile centos-ext-7.X centos-7.X https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/centos/xml/xml/centos-ext-7.0-current.xml https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/centos/hacks/6g_centos-ext-7-hacks.sh
+To create fast-vm VM with this configuration use the profile name as shown below
+  # fast-vm create centos-ext-7.X XX
+
