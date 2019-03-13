@@ -54,6 +54,8 @@
   # cd /var/tmp/fedora29
   # wget http://ftp.linux.cz/pub/linux/people/ondrej_famera/fastvm-images/appliance-1.39.11.tar.xz
   # tar xf appliance-1.39.11.tar.xz
+- to prevent appliance to be deleted after 30 days by 'systemd-tmpfiles' daemon you can create exception from cleanup as root user with command below
+  # echo 'x /var/tmp/fedora29' > /etc/tmpfiles.d/fast-vm-fedora29-appliance.conf
 
  == kickstart KNOWN ISSUES ==
  RHEL 6.3 installer is complaining about 'unsupported hardware' and needs manual step to continue
