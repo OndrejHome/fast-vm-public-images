@@ -12,8 +12,45 @@
 Semi-automated installation of Gentoo based on work from https://github.com/sorah/gentoo-build
 TODO: make available config file.
 
+1. Generate configuration inside of gentoo-build repo
+  # ./minify.sh /tmp/gentoo-build.sh
+2. Boot gentoo minimal install CD and start sshd daemon
+  # passwd root
+  # /etc/init.d/sshd start
+3. copy the minified script to live system
+  # scp /tmp/gentoo-build.sh root@live-cd:
+4. SSH to live system and run the installer script (~20-30 minutes to finish)
+  # bash gentoo-build.sh
+5. Once script finished poweroff the system.
+
+== TODO: modifications to implement properly ==
+- removal of kernel sources to make image smaller
+diff --git a/scripts/finalize.sh b/scripts/finalize.sh
+index 814a7f1..a632c7c 100755
+--- a/scripts/finalize.sh
++++ b/scripts/finalize.sh
+@@ -9,6 +9,7 @@ set -e
+ rm -f /etc/resolv.conf
+ ln -snf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+ true > /etc/machine-id
++emerge -c gentoo-sources
+ EOF
+
+ if [ "_$GB_REMOVE_PORTAGE" = "_1" ]; then
+@@ -16,7 +17,10 @@ if [ "_$GB_REMOVE_PORTAGE" = "_1" ]; then
+ source /etc/profile
+ set -x
+ set -e
++# cleanup /usr/portage so new one needs to be downloaded when system is used
+ rm -rf /usr/portage
++# add the CHOST into /etc/portage/make.conf as it normally comes set from profile in /usr/portage/profiles
++echo 'CHOST="x86_64-pc-linux-gnu"' >> /etc/portage/make.conf
+ rm -fv /stage3.tar.bz2
+ EOF
+
 
 == List of use stage3 and portage releases used for images
 
-fast-vm image name  | stage3 version | portage-snapshot-version
-gentoo-gen-20180813 | 20180813       | 20180820
+fast-vm image name  | stage3 version | portage-snapshot-version | variables.sh file
+gentoo-gen-20180813 | 20180813       | 20180820                 |
+gentoo-gen-20190328 | 20190328       | 20190402                 | gentoo-20190328-variables.sh
