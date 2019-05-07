@@ -8,10 +8,15 @@
 - hostname configured according to VM_NAME from fast-vm
 - SSH server activated and root login with password permitted
 - removed portage files and kernel sources (except of builded parts)
+- (systemd) uses journald for logs and vixie-cron for cron
+- (openrc) uses sysklogd for logs and vixie-cron for cron
 
 Semi-automated installation of Gentoo based on work from https://github.com/sorah/gentoo-build
-TODO: make available config file.
+Configuration files are available in the '/gentoo/gentoo-build-variables' directory of this repo.
+These config files should be used agains modified version of gentoo-build scripts that are
+avaialble at https://github.com/OndrejHome/gentoo-build
 
+== Image generation instructions
 1. Generate configuration inside of gentoo-build repo
   # ./minify.sh /tmp/gentoo-build.sh
 2. Boot gentoo minimal install CD and start sshd daemon
@@ -51,8 +56,9 @@ index 814a7f1..a632c7c 100755
 
 == List of use stage3 and portage releases used for images
 
-fast-vm image name  | stage3 version | portage-snapshot-version | variables.sh file
-gentoo190328        | 20190328       | 20190402                 | gentoo-20190328-variables.sh
-gentoo190428        | 20190428       | 20190430                 | gentoo-20190428-variables.sh
-gentoo190501o       | 20190501T214502Z | 20190505               | gentoo-20190501T214502Z-variables-openrc.sh
-gentoo190503s       | 20190503       | 20190505                 | gentoo-20190503-variables-systemd.sh
+fast-vm image name  | init sys | stage3 version   | portage-snapshot-version | variables.sh file
+gentoo190328        | systemd  | 20190328         | 20190402                 | gentoo-20190328-variables.sh
+gentoo190428        | systemd  | 20190428         | 20190430                 | gentoo-20190428-variables.sh
+gentoo190501o       | openrc   | 20190501T214502Z | 20190505                 | gentoo-20190501T214502Z-variables-openrc.sh
+gentoo190503s       | systemd  | 20190503         | 20190505                 | gentoo-20190503-variables-systemd.sh
+gentoo190505o       | openrc   | 20190505T214502Z | 20190506                 | gentoo-20190505T214502Z-variables-openrc.sh
