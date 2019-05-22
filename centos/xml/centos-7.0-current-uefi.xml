@@ -6,6 +6,7 @@
   <os>
     <type arch='x86_64'>hvm</type>
     <loader readonly='yes' type='pflash'>/usr/share/OVMF/OVMF_CODE.fd</loader>
+    <nvram template='/usr/share/OVMF/OVMF_VARS.fd'/>
   </os>
   <features>
     <acpi/>
