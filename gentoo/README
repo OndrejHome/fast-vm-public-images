@@ -64,3 +64,5 @@ gentoo190503s       | systemd  | 20190503         | 20190505                 | g
 gentoo190505o       | openrc   | 20190505T214502Z | 20190506                 | gentoo-20190505T214502Z-variables-openrc.sh
 gentoo190528s       | systemd  | 20190528         | 20190531                 | gentoo-20190528-variables-systemd.sh
 gentoo190529o       | openrc   | 20190529T214501Z | 20190531                 | gentoo-20190529T214501Z-variables-openrc.sh
+gentoo190718s       | systemd  | 20190718         | 20190723                 | gentoo-20190718-variables-systemd.sh
+gentoo190721o       | openrc   | 20190721T214502Z | 20190723                 | gentoo-20190721T214502Z-variables-openrc.sh
