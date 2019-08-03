@@ -47,6 +47,15 @@
  - these images are intended for the qemu on x86_64 platform emulating PPC64LE
  - no hackfile for these images is available yet so the hostname is fixed
 
+ == CentOS 6.X GUI ==
+ - these images are installed with 'Desktop' package set and activates graphical login
+ - XML for this images uses 2GB or RAM and includes graphic card for graphical output
+
+ == CentOS 7.X GUI ==
+ - these images are installed with 'Server with GUI' package set and activates graphical login
+ - XML for this images uses 2GB or RAM and includes graphic card for graphical output
+ - root_lv for this installation is larger by 500MB compared to non-graphical CentOS 7.X image
+
 == CentOS 7 ext profiles
 For fast-vm hypervisors that have configured 'system-bridge' software bridge as
 described in the https://www.famera.cz/blog/fast-vm/user_guide.html#exposing-fast-vm-systems-to-external-network-via-bridge
@@ -58,4 +67,3 @@ To import profile, make sure that you first imported some centos-7.X image and t
   # fast-vm import_profile centos-ext-7.X centos-7.X https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/centos/xml/centos-ext-7.0-current.xml https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/centos/hacks/6g_centos-ext-7-hacks.sh
 To create fast-vm VM with this configuration use the profile name as shown below
   # fast-vm create centos-ext-7.X XX
-
