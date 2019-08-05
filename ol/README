@@ -1,0 +1,23 @@
+== OL - Oracle Linux
+## Login information
+# user: root
+# pass: testtest
+- SSH enabled on boot with root login
+## System details
+! systems are not registered
+- emulated Intel 6300ESB WatchDog
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- systems installed using minimal option where available (rhel5 with many disabled options, check *.ks file for details)
+- system would be running for the first time after installation
+- disk drive connection:
+  - RHEL 6.3 - 8.0 - SCSI drive using virtio SCSI controller (supports TRIM)
+## Drive layout
+- 6 GB drive
+(RHEL 6,7 non-UEFI version)
+  - 500MB /boot (1st partition)
+  - LVM name (oXvg, where X is 5, 6 or 7, according to Oracle Linux major version)
+    - 256MB swap_lv
+    - 5000MB root_lv
+    - rest is free space on VG oXvg
