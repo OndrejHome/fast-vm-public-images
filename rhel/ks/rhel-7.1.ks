@@ -24,7 +24,7 @@ services --disabled="chronyd"
 # Do not configure the X Window System
 skipx
 # System timezone
-timezone Europe/Prague --isUtc --nontp
+timezone Europe/London --isUtc --nontp
 # System bootloader configuration
 bootloader --location=mbr --boot-drive=sda
 # Partition clearing information
