@@ -9,6 +9,8 @@ fi
 export LIBGUESTFS_BACKEND=direct
 ## hostname
 VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
+## timezone of hypervisor
+timezone=$(readlink /etc/localtime | sed 's/^.*zoneinfo\/\(.*\)$/\1/')
 
 guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/c7vg/root_lv -m /dev/sda1:/boot --selinux <<EOF
 # enable eth0 adapter on boot
@@ -18,6 +20,10 @@ sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
 # enable graphical login
 rm /etc/systemd/system/default.target
 ln-s /usr/lib/systemd/system/graphical.target /etc/systemd/system/default.target
+# change timezone of machine to match hypervisor
+sh 'rm -f /etc/localtime'
+sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
+selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/localtime
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-eth0
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/hostname
 EOF
