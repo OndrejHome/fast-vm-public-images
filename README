@@ -6,8 +6,8 @@ README files for distributions containing more information about provided files.
 
 ==== Image download locations ====
 Images that can be used with files here can be downloaded from following locations:
-Primary location (slow - only 10 Mbit/s)
-  - https://www.famera.cz/large_data/fast-vm-images/
+Primary location 
+  - currently unavailable, use the mirrors
 Mirror locations (fast - up to 10000 Mbit/s)
   - http://ftp.linux.cz/pub/linux/people/ondrej_famera/fastvm-images/
 
