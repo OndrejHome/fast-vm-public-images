@@ -16,6 +16,8 @@ fi
 export LIBGUESTFS_BACKEND=direct
 ## hostname
 VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
+## timezone of hypervisor
+timezone=$(readlink /etc/localtime | sed 's/^.*zoneinfo\/\(.*\)$/\1/')
 
 guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/r7vg/root_lv -m /dev/sda1:/boot --selinux <<EOF
 # create configuration for external network interface
@@ -26,6 +28,10 @@ sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/; s/DEFROUTE=.*/DEFROUTE=no/; s/IPV6_DEFROUTE
 sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/; s/eth0/eth1/g; s/UUID=[a-f0-9]\{4\}/UUID=beef/" /etc/sysconfig/network-scripts/ifcfg-eth1'
 # change the hostname of machine
 sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
+# change timezone of machine to match hypervisor
+sh 'rm -f /etc/localtime'
+sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
+selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/localtime
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-eth0
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-eth1
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/hostname

@@ -17,12 +17,12 @@ guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/r6vg/root_lv -m /dev/sda1:/boo
 sh 'sed -i "s/HWADDR=.*$/HWADDR=\"${VM_MAC}\"/; s/^ONBOOT=.*$/ONBOOT=\"yes\"/" /etc/sysconfig/network-scripts/ifcfg-eth0'
 # change the hostname of machine
 sh 'sed -i "s/HOSTNAME=.*$/HOSTNAME=$VM_HOSTNAME/" /etc/sysconfig/network'
-# change timezone of machine to match hypervisor
-sh 'rm -f /etc/localtime'
-sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
 # RHEL 6.4, 6.4, 6.5 contained broken line in 'file_contexts' file, this removes it so we can apply other selinux labels
 sh 'sed -i "/\\pid/d" /etc/selinux/targeted/contexts/files/file_contexts'
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/selinux/targeted/contexts/files/file_contexts
+# change timezone of machine to match hypervisor
+sh 'rm -f /etc/localtime'
+sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
 # relabel files that we were touching with correct SELinux labels
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/localtime
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-eth0
