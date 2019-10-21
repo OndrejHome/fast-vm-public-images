@@ -9,7 +9,7 @@ rootpw  --plaintext testtest
 firewall --service=ssh
 authconfig --enableshadow --passalgo=sha512
 selinux --enforcing
-timezone --utc Europe/Prague
+timezone --utc Europe/London
 bootloader --location=partition --driveorder=sda --append="crashkernel=128M"
 # The following is the partition information you requested
 # Note that any partitions you deleted are not expressed

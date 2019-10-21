@@ -25,8 +25,8 @@ sh 'sed -i "s/id:3:initdefault/id:5:initdefault/" /etc/inittab'
 # change timezone of machine to match hypervisor
 sh 'rm -f /etc/localtime'
 sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
-selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/localtime
 # relabel files that we were touching with correct SELinux labels
+selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/localtime
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-eth0
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/inittab
