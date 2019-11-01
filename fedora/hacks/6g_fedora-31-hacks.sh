@@ -21,6 +21,8 @@ sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
 # change timezone of machine to match hypervisor
 sh 'rm -f /etc/localtime'
 sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
+sh 'sed -i "s/#PermitRootLogin.*/PermitRootLogin yes/" /etc/ssh/sshd_config'
+selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/ssh/sshd_config
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/localtime
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-ens${net_card}
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/hostname
