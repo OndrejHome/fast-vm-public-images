@@ -9,7 +9,7 @@ rootpw testtest
 firewall --enabled --port=22:tcp
 authconfig --enableshadow --enablemd5
 selinux --enforcing
-timezone --utc Europe/Prague
+timezone --utc Europe/London
 bootloader --location=mbr --driveorder=hda
 
 zerombr
