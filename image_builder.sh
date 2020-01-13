@@ -17,6 +17,7 @@ if [ $# -lt 2 ]; then
 	echo "Usage: $0 test ImageName VMNumber PathToImageXML PathToImageHackScript"
 	exit 1
 fi
+echo "===== ImageBuilder === DEBUG $0 $@"
 ## functions
 cleanup_vm () {
 	echo "===== ImageBuilder === INFO deleting the VM"
@@ -56,7 +57,7 @@ if [ "$1" == 'build' ]; then
   touch /tmp/dummy.xml
   out=$(fast-vm import_custom_image "$IMAGE_SIZE" "$IMAGE_NAME" empty /tmp/dummy.xml)
   if [ "$?" != "0" ]; then
-    echo "===== ImageBuilder === ERROR creating empty image"
+    echo "===== ImageBuilder === ERROR creating empty image: $out"
     rm /tmp/dummy.xml
     exit 1
   fi
