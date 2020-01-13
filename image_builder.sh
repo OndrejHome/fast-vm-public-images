@@ -55,11 +55,12 @@ if [ "$1" == 'build' ]; then
   echo "===== ImageBuilder === INFO creating empty image for build"
   touch /tmp/dummy.xml
   out=$(fast-vm import_custom_image "$IMAGE_SIZE" "$IMAGE_NAME" empty /tmp/dummy.xml)
-  rm /tmp/dummy.xml
   if [ "$?" != "0" ]; then
     echo "===== ImageBuilder === ERROR creating empty image"
+    rm /tmp/dummy.xml
     exit 1
   fi
+  rm /tmp/dummy.xml
   disk=$(echo "$out"|awk '/importing image empty into/ {print $NF}')
   ###
   echo "===== ImageBuilder === INFO running InstallScript on empty image BEGIN $(date)"
