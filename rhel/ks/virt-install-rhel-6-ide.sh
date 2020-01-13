@@ -12,7 +12,7 @@ virt-install \
 --os-type=linux  --os-variant=rhel6.3 \
 --disk path=$BASE_IMAGE_LV,bus=ide,format=raw \
 --location $ISO_LOCATION \
---extra-args="ks=file:/$KICKSTART nonet text console=ttyS0,115200n8" \
+--extra-args="ks=file:/$(basename $KICKSTART) nonet text console=ttyS0,115200n8" \
 --initrd-inject=$KICKSTART \
 --noreboot \
 --nographics

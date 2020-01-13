@@ -14,7 +14,7 @@ virt-install \
 --disk path=$BASE_IMAGE_LV,bus=scsi,discard=unmap,format=raw \
 --controller scsi,model=virtio-scsi \
 --location $ISO_LOCATION \
---extra-args="ks=file:/$KICKSTART nonet text console=ttyS0,115200n8" \
+--extra-args="ks=file:/$(basename $KICKSTART) nonet text console=ttyS0,115200n8" \
 --initrd-inject=$KICKSTART \
 --noreboot \
 --nographics
