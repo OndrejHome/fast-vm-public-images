@@ -8,7 +8,7 @@ cdrom
 # Use text mode install
 text
 # Run the Setup Agent on first boot
-firstboot --enable
+firstboot --disable
 ignoredisk --only-use=sda
 # Keyboard layouts
 keyboard --vckeymap=us --xlayouts='us'
