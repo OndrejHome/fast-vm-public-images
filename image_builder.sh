@@ -52,6 +52,7 @@ if [ "$1" == 'build' ]; then
   fi
 
   #### MAIN TESTING
+  echo "===== ImageBuilder === INFO creating empty image for build"
   touch /tmp/dummy.xml
   out=$(fast-vm import_custom_image "$IMAGE_SIZE" "$IMAGE_NAME" empty /tmp/dummy.xml)
   rm /tmp/dummy.xml
@@ -60,13 +61,18 @@ if [ "$1" == 'build' ]; then
     exit 1
   fi
   disk=$(echo "$out"|awk '/importing image empty into/ {print $NF}')
+  ###
+  echo "===== ImageBuilder === INFO running InstallScript on empty image BEGIN $(date)"
+  date_start=$(date '+%s')
   "$INSTALL_SCRIPT" "$disk" "$ISO_FILE" "$KICKSTART_FILE"
   if [ "$?" != "0" ]; then
     echo "===== ImageBuilder === ERROR install script failed"
     cleanup_image "$IMAGE_NAME"
     exit 1
   fi
-
+  ###
+  date_end=$(date '+%s')
+  echo "===== ImageBuilder === INFO running InstallScript on empty image END $(date) ($(($date_end-$date_start))s)"
   echo "===== ImageBuilder === INFO build successful"
 fi
 ## check the test parameters
@@ -89,6 +95,7 @@ if [ "$1" == 'test' ]; then
 
   #### MAIN TESTING
   # create VM from image
+  echo "===== ImageBuilder === INFO creating test VM $VM_NUMBER"
   fast-vm create "$IMAGE_NAME" "$VM_NUMBER" "$XML_FILE" "$HACK_FILE"
   if [ "$?" != "0" ]; then
     echo "===== ImageBuilder === ERROR creating test VM"
@@ -96,6 +103,7 @@ if [ "$1" == 'test' ]; then
   fi
 
   # start VM
+  echo "===== ImageBuilder === INFO starting test VM $VM_NUMBER"
   fast-vm start "$VM_NUMBER"
   if [ "$?" != "0" ]; then
     echo "===== ImageBuilder === ERROR starting test VM"
@@ -104,13 +112,16 @@ if [ "$1" == 'test' ]; then
   fi
 
   # connect to VM and print `uname -a`
+  echo "===== ImageBuilder === INFO running tests BEGIN $(date) with timeout 120s"
+  date_start=$(date '+%s')
   USER=root PASS=testtest timeout 120 fast-vm ssh "$VM_NUMBER" ./image_builder_test_script.sh 
   if [ "$?" != "0" ]; then
     echo "===== ImageBuilder === ERROR running test command on test VM"
     cleanup_vm "$VM_NUMBER"
     exit 1
   fi
-
-  echo "===== ImageBuilder === INFO test successful"
+  date_end=$(date '+%s')
+  echo "===== ImageBuilder === INFO running tests END $(date) ($(($date_end-$date_start))s)"
   cleanup_vm "$VM_NUMBER"
+  echo "===== ImageBuilder === INFO test successful"
 fi
