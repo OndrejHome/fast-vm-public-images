@@ -77,6 +77,9 @@ d-i clock-setup/ntp boolean false
 # - crypto:  use LVM within an encrypted partition
 d-i partman-auto/method string lvm
 
+# workaround/fix for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=930846
+d-i partman-auto-lvm/guided_size string max
+
 # If one of the disks that are going to be automatically partitioned
 # contains an old LVM configuration, the user will normally receive a
 # warning. This can be preseeded away...
