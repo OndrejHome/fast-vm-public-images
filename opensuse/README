@@ -1,0 +1,19 @@
+== OpenSUSE
+## Login information
+# user: root
+# pass: testtest
+- SSH enabled on boot with root login
+## System details
+- emulated Intel 6300ESB WatchDog
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- [!!] system installd by hand with 'Server' profile (minimal package selection)
+- system would be running for the first time after installation
+## Drive layout
+- 6 GB drive
+  - 8MB - BIOS boot device
+  - LVM name (os15vg)
+    - 256MB swap_lv
+    - 5GB root_lv
+    - rest is free space on VG os15vg
