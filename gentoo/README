@@ -55,7 +55,7 @@ index 814a7f1..a632c7c 100755
 
 
 == List of use stage3 and portage releases used for images
-
+=== 2019
 fast-vm image name  | init sys | stage3 version   | portage-snapshot-version | variables.sh file
 gentoo190328        | systemd  | 20190328         | 20190402                 | gentoo-20190328-variables.sh
 gentoo190428        | systemd  | 20190428         | 20190430                 | gentoo-20190428-variables.sh
@@ -68,3 +68,6 @@ gentoo190718s       | systemd  | 20190718         | 20190723                 | g
 gentoo190721o       | openrc   | 20190721T214502Z | 20190723                 | gentoo-20190721T214502Z-variables-openrc.sh
 gentoo190918s       | systemd  | 20190918         | 20190920                 | gentoo-20190918-variables-systemd.sh
 gentoo190918o       | openrc   | 20190918T214502Z | 20190920                 | gentoo-20190918T214502Z-variables-openrc.sh
+=== 2020
+gentoo200416s       | systemd  | 20200416         | 20200422                 | gentoo-20200416-variables-systemd.sh
+gentoo200419o       | openrc   | 20200419T214502Z | 20200422                 | gentoo-20200419T214502Z-variables-openrc.sh
