@@ -18,3 +18,23 @@
     - 5GB root_lv
     - rest is free space on VG uXXYYvg
 
+== Ubuntu Server LTS (manually installed)
+## Login information
+# user: root
+# pass: testtest
+(additionally user 'ubuntu' with password 'testtest' is present)
+## System details
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- typical server install with 'install OpenSSH server' option enabled
+- system would be running for the first time after installation
+- disk drive connection - SCSI drive using virtio SCSI controller (supports TRIM)
+## Drive layout
+- 6 GB drive
+  - bios_grub partition (1MB)
+  - /boot (512MB ext4)
+  - LVM name (uXXYYvg, for. example Ubuntu 20.04 will have VG name u2004vg)
+    - 5GB root_lv (ext4)
+    - 256MB swap_lv
+    - rest is free space on VG uXXYYvg
