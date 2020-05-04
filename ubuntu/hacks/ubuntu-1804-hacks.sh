@@ -9,6 +9,8 @@ fi
 export LIBGUESTFS_BACKEND=direct
 ## hostname
 VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
+## timezone of hypervisor
+timezone=$(readlink /etc/localtime | sed 's/^.*zoneinfo\/\(.*\)$/\1/')
 
 # detect the slot where network card is as system uses hardware-based names for network interfaces
 net_card_slot=$(virsh --connect qemu:///system dumpxml $VM_NAME|xmllint --xpath "//interface[.//source[@network='$LIBVIRT_NETWORK']]/address/@slot" - 2>/dev/null|cut -d\" -f 2|head -1|cut -dx -f 2)
@@ -26,4 +28,7 @@ sh 'sed -i "s#^root.*#root:\\\$6\\\$KwxLHt4MoI68H4VX\\\$JXNoY6cD2xpcDafKWorxDpbQ
 sh 'echo "network: { ethernets: { ens${net_card}: { dhcp4: yes } }, version: 2}" > /etc/netplan/fast-vm-dhcp.yaml'
 # set the hostname
 sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
+# change timezone of machine to match hypervisor
+sh 'rm -f /etc/localtime'
+sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
 EOF
