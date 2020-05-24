@@ -3,8 +3,8 @@ ISO_DIR="/mnt/iso-storage/oraclelinux"
 
 ## Oracle Linux 6.x
 #===
-./image_builder.sh build o63 ol/ks/virt-install-ol-6.sh "$ISO_DIR/OracleLinux-R6-U3-Server-x86_64-dvd.iso" ol/ks/ol-6.ks |tee 1_build-o63.log
-./image_builder.sh build o64 ol/ks/virt-install-ol-6.sh "$ISO_DIR/OracleLinux-R6-U4-Server-x86_64-dvd.iso" ol/ks/ol-6.ks |tee 1_build-o64.log
+./image_builder.sh build o63 ol/ks/virt-install-ol-6.sh "$ISO_DIR/OracleLinux-R6-U3-Server-x86_64-dvd.iso" ol/ks/ol-6.3.ks |tee 1_build-o63.log
+./image_builder.sh build o64 ol/ks/virt-install-ol-6.sh "$ISO_DIR/OracleLinux-R6-U4-Server-x86_64-dvd.iso" ol/ks/ol-6.3.ks |tee 1_build-o64.log
 ./image_builder.sh build o65 ol/ks/virt-install-ol-6.sh "$ISO_DIR/OracleLinux-R6-U5-Server-x86_64-dvd.iso" ol/ks/ol-6.ks |tee 1_build-o65.log
 ./image_builder.sh build o66 ol/ks/virt-install-ol-6.sh "$ISO_DIR/OracleLinux-R6-U6-Server-x86_64-dvd.iso" ol/ks/ol-6.ks |tee 1_build-o66.log
 ./image_builder.sh build o67 ol/ks/virt-install-ol-6.sh "$ISO_DIR/OracleLinux-R6-U7-Server-x86_64-dvd.iso" ol/ks/ol-6.ks |tee 1_build-o67.log

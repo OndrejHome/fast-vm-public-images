@@ -32,6 +32,7 @@ ISO_DIR="/mnt/iso-storage/centos"
 ./image_builder.sh build c75 centos/ks/virt-install-centos-7.sh "$ISO_DIR/CentOS-7-x86_64-DVD-1804.iso" centos/ks/centos-7.1.ks |tee 1_build-c75.log
 ./image_builder.sh build c76 centos/ks/virt-install-centos-7.sh "$ISO_DIR/CentOS-7-x86_64-DVD-1810.iso" centos/ks/centos-7.1.ks |tee 1_build-c76.log
 ./image_builder.sh build c77 centos/ks/virt-install-centos-7.sh "$ISO_DIR/CentOS-7-x86_64-DVD-1908.iso" centos/ks/centos-7.1.ks |tee 1_build-c77.log
+./image_builder.sh build c78 centos/ks/virt-install-centos-7.sh "$ISO_DIR/CentOS-7-x86_64-DVD-2003.iso" centos/ks/centos-7.1.ks |tee 1_build-c78.log
 #
 ./image_builder.sh build c72-uefi centos/ks/virt-install-centos-7-uefi.sh "$ISO_DIR/CentOS-7-x86_64-DVD-1511.iso" centos/ks/centos-7.1-uefi.ks |tee 1_build-c72-uefi.log
 ./image_builder.sh build c73-uefi centos/ks/virt-install-centos-7-uefi.sh "$ISO_DIR/CentOS-7-x86_64-DVD-1611.iso" centos/ks/centos-7.1-uefi.ks |tee 1_build-c73-uefi.log
@@ -39,6 +40,7 @@ ISO_DIR="/mnt/iso-storage/centos"
 ./image_builder.sh build c75-uefi centos/ks/virt-install-centos-7-uefi.sh "$ISO_DIR/CentOS-7-x86_64-DVD-1804.iso" centos/ks/centos-7.1-uefi.ks |tee 1_build-c75-uefi.log
 ./image_builder.sh build c76-uefi centos/ks/virt-install-centos-7-uefi.sh "$ISO_DIR/CentOS-7-x86_64-DVD-1810.iso" centos/ks/centos-7.1-uefi.ks |tee 1_build-c76-uefi.log
 ./image_builder.sh build c77-uefi centos/ks/virt-install-centos-7-uefi.sh "$ISO_DIR/CentOS-7-x86_64-DVD-1908.iso" centos/ks/centos-7.1-uefi.ks |tee 1_build-c77-uefi.log
+./image_builder.sh build c78-uefi centos/ks/virt-install-centos-7-uefi.sh "$ISO_DIR/CentOS-7-x86_64-DVD-2003.iso" centos/ks/centos-7.1-uefi.ks |tee 1_build-c78-uefi.log
 
 #===
 ./image_builder.sh test c70 42 centos/xml/centos-6.3-current.xml centos/hacks/6g_centos-7-hacks.sh | tee 2_test-c70.log
@@ -49,6 +51,7 @@ ISO_DIR="/mnt/iso-storage/centos"
 ./image_builder.sh test c75 42 centos/xml/centos-6.3-current.xml centos/hacks/6g_centos-7-hacks.sh | tee 2_test-c75.log
 ./image_builder.sh test c76 42 centos/xml/centos-6.3-current.xml centos/hacks/6g_centos-7-hacks.sh | tee 2_test-c76.log
 ./image_builder.sh test c77 42 centos/xml/centos-6.3-current.xml centos/hacks/6g_centos-7-hacks.sh | tee 2_test-c77.log
+./image_builder.sh test c78 42 centos/xml/centos-6.3-current.xml centos/hacks/6g_centos-7-hacks.sh | tee 2_test-c78.log
 #
 ./image_builder.sh test c72-uefi 42 centos/xml/centos-7.0-current-uefi.xml centos/hacks/6g_centos-7-hacks-uefi.sh | tee 2_test-c72.log
 ./image_builder.sh test c73-uefi 42 centos/xml/centos-7.0-current-uefi.xml centos/hacks/6g_centos-7-hacks-uefi.sh | tee 2_test-c73.log
@@ -56,6 +59,7 @@ ISO_DIR="/mnt/iso-storage/centos"
 ./image_builder.sh test c75-uefi 42 centos/xml/centos-7.0-current-uefi.xml centos/hacks/6g_centos-7-hacks-uefi.sh | tee 2_test-c75.log
 ./image_builder.sh test c76-uefi 42 centos/xml/centos-7.0-current-uefi.xml centos/hacks/6g_centos-7-hacks-uefi.sh | tee 2_test-c76.log
 ./image_builder.sh test c77-uefi 42 centos/xml/centos-7.0-current-uefi.xml centos/hacks/6g_centos-7-hacks-uefi.sh | tee 2_test-c77.log
+./image_builder.sh test c78-uefi 42 centos/xml/centos-7.0-current-uefi.xml centos/hacks/6g_centos-7-hacks-uefi.sh | tee 2_test-c78.log
 #===
 
 ## CentOS 8.x

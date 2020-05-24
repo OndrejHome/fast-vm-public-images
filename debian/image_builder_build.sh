@@ -10,6 +10,7 @@ ISO_DIR="/mnt/iso-storage/debian"
 ./image_builder.sh build d98 debian/preseed/virt-install-debian-9.sh "$ISO_DIR/debian-9.8.0-amd64-DVD-1.iso" debian/preseed/debian-9.preseed | tee 1_build-d98.log
 ./image_builder.sh build d99 debian/preseed/virt-install-debian-9.sh "$ISO_DIR/debian-9.9.0-amd64-DVD-1.iso" debian/preseed/debian-9.preseed | tee 1_build-d99.log
 ./image_builder.sh build d911 debian/preseed/virt-install-debian-9.sh "$ISO_DIR/debian-9.11.0-amd64-DVD-1.iso" debian/preseed/debian-9.preseed | tee 1_build-d911.log
+./image_builder.sh build d912 debian/preseed/virt-install-debian-9.sh "$ISO_DIR/debian-9.12.0-amd64-DVD-1.iso" debian/preseed/debian-9.preseed | tee 1_build-d912.log
 #===
 ./image_builder.sh test d93 42 debian/xml/debian-9.xml debian/hacks/debian-9.sh | tee 2_test_d93.log
 ./image_builder.sh test d94 42 debian/xml/debian-9.xml debian/hacks/debian-9.sh | tee 2_test_d94.log
@@ -18,6 +19,7 @@ ISO_DIR="/mnt/iso-storage/debian"
 ./image_builder.sh test d98 42 debian/xml/debian-9.xml debian/hacks/debian-9.sh | tee 2_test_d98.log
 ./image_builder.sh test d99 42 debian/xml/debian-9.xml debian/hacks/debian-9.sh | tee 2_test_d99.log
 ./image_builder.sh test d911 42 debian/xml/debian-9.xml debian/hacks/debian-9.sh | tee 2_test_d911.log
+./image_builder.sh test d912 42 debian/xml/debian-9.xml debian/hacks/debian-9.sh | tee 2_test_d912.log
 #===
 
 ## Debian 10.x
@@ -25,8 +27,12 @@ ISO_DIR="/mnt/iso-storage/debian"
 ./image_builder.sh build d100 debian/preseed/virt-install-debian-10.sh "$ISO_DIR/debian-10.0.0-amd64-DVD-1.iso" debian/preseed/debian-10.preseed | tee 1_build-d100.log
 ./image_builder.sh build d101 debian/preseed/virt-install-debian-10.sh "$ISO_DIR/debian-10.1.0-amd64-DVD-1.iso" debian/preseed/debian-10.preseed | tee 1_build-d101.log
 ./image_builder.sh build d102 debian/preseed/virt-install-debian-10.sh "$ISO_DIR/debian-10.2.0-amd64-DVD-1.iso" debian/preseed/debian-10.preseed | tee 1_build-d102.log
+./image_builder.sh build d103 debian/preseed/virt-install-debian-10.sh "$ISO_DIR/debian-10.3.0-amd64-DVD-1.iso" debian/preseed/debian-10.preseed | tee 1_build-d103.log
+./image_builder.sh build d104 debian/preseed/virt-install-debian-10.sh "$ISO_DIR/debian-10.4.0-amd64-DVD-1.iso" debian/preseed/debian-10.preseed | tee 1_build-d104.log
 #===
 ./image_builder.sh test d100 42 debian/xml/debian-10.xml debian/hacks/debian-10.sh | tee 2_test_d100.log
 ./image_builder.sh test d101 42 debian/xml/debian-10.xml debian/hacks/debian-10.sh | tee 2_test_d101.log
 ./image_builder.sh test d102 42 debian/xml/debian-10.xml debian/hacks/debian-10.sh | tee 2_test_d102.log
+./image_builder.sh test d103 42 debian/xml/debian-10.xml debian/hacks/debian-10.sh | tee 2_test_d103.log
+./image_builder.sh test d104 42 debian/xml/debian-10.xml debian/hacks/debian-10.sh | tee 2_test_d104.log
 #===
