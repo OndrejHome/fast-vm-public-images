@@ -9,6 +9,14 @@ fi
 export LIBGUESTFS_BACKEND=direct
 ## hostname
 VM_HOSTNAME=$(echo $VM_NAME|sed -e 's/\./-/g; s/_/-/g')
+
+if [ ! -f /var/lib/fast-vm/appliance/capability_xfs_el8 ] && [ ! -d /var/tmp/fedora29/appliance ]; then
+        echo "[!!!] XFS_EL8 capable appliance or Fedora 29+ appliance is required for properrun"
+        exit 1
+fi
+# compatibility: blindly try exporting path to fedora29 appliance
+if [ -z "$LIBGUESTFS_PATH" ]; then export LIBGUESTFS_PATH=/var/tmp/fedora29/appliance; fi
+
 # detect the slot where network card is as system uses hardware-based names for network interfaces
 net_card_slot=$(virsh --connect qemu:///system dumpxml $VM_NAME|xmllint --xpath "//interface[.//source[@network='$LIBVIRT_NETWORK']]/address/@slot" - 2>/dev/null|cut -d\" -f 2|head -1|cut -dx -f 2)
 net_card=$(($net_card_slot+0))
