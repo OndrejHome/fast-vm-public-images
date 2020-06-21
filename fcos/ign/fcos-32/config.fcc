@@ -1,0 +1,18 @@
+variant: fcos
+version: 1.0.0
+passwd:
+  users:
+    - name: root
+      password_hash: "$6$djBl8KLBTHWtKipv$R.WDr6ukxN450H9GASQPPxJ5ItKdsJpzx9ZM7nFfAJL4n0BThEMAOEMzyseiHdIsTlC0gZr9FiKeSG7JlwEtR."
+storage:
+  files:
+    - path: /etc/ssh/sshd_config.d/02-enable-ssh-passwords.conf
+      mode: 0644
+      contents:
+        inline: |
+          PasswordAuthentication yes
+          PermitRootLogin yes
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: "fastvm-fcos"
