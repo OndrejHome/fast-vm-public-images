@@ -1,7 +1,11 @@
+## creating config.ign for FCOS
+
+[Fedora CoreOS - Producing an Ignition File](https://docs.fedoraproject.org/en-US/fedora-coreos/producing-ign/)
+
 ## creating FCOS image for fast-vm
 At this point image is a converted QEMU qcow2.xz image with basic Ignition file.
 
-1. Get the QEMU qcow2.xz image and unpack it (~2GB space is needed)
+1. Get the QEMU qcow2.xz image and unpack it (~2GB space is needed) - [Download Fedora CoreOS](https://getfedora.org/coreos/download?tab=metal_virtualized&stream=stable)
   ~~~
   # wget https://builds.coreos.fedoraproject.org/prod/streams/stable/builds/32.20200601.3.0/x86_64/fedora-coreos-32.20200601.3.0-qemu.x86_64.qcow2.xz
   # unxz fedora-coreos-32.20200601.3.0-qemu.x86_64.qcow2.xz
@@ -37,7 +41,7 @@ At this point image is a converted QEMU qcow2.xz image with basic Ignition file.
   EOF
   ~~~
 
-5. (1/2) sparsify image: use `fast-vm-miage compact` to cleanup free space on filesystems.
+5. (1/2) sparsify image: use `fast-vm-image compact` to cleanup free space on filesystems.
   ~~~
   # fast-vm-image compact fcos32.200601
   ~~~
@@ -57,7 +61,7 @@ At this point image is a converted QEMU qcow2.xz image with basic Ignition file.
   ~~~
 
   ~~~
-  # blkdiscard -o 2885681152/dev/xxx/fastvm-fcos32.200601
+  # blkdiscard -o 2885681152 /dev/xxx/fastvm-fcos32.200601
   # fast-vm-image list|grep fcos32.200601
   fcos32.200601            8g( 22.27%) |missing  no hack files|ok       no hack files|
   ~~~
