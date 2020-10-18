@@ -71,3 +71,5 @@ gentoo190918o       | openrc   | 20190918T214502Z | 20190920                 | g
 === 2020
 gentoo200416s       | systemd  | 20200416         | 20200422                 | gentoo-20200416-variables-systemd.sh
 gentoo200419o       | openrc   | 20200419T214502Z | 20200422                 | gentoo-20200419T214502Z-variables-openrc.sh
+gentoo201007s       | systemd  | 20201007T214504Z | 20201011                 | gentoo-20201007T214504Z-variables-systemd.sh
+gentoo201007o       | openrc   | 20201007T214504Z | 20201011                 | gentoo-20201007T214504Z-variables-openrc.sh
