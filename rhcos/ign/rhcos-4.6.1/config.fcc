@@ -1,0 +1,40 @@
+variant: fcos
+version: 1.0.0
+passwd:
+  users:
+    - name: root
+      password_hash: "$6$djBl8KLBTHWtKipv$R.WDr6ukxN450H9GASQPPxJ5ItKdsJpzx9ZM7nFfAJL4n0BThEMAOEMzyseiHdIsTlC0gZr9FiKeSG7JlwEtR."
+storage:
+  files:
+    - path: /etc/ssh/sshd_config
+      mode: 0644
+      overwrite: true
+      contents:
+        inline: |
+          ## Original option provided in RHCOS-4.6.1
+          HostKey /etc/ssh/ssh_host_rsa_key
+          HostKey /etc/ssh/ssh_host_ecdsa_key
+          HostKey /etc/ssh/ssh_host_ed25519_key
+          SyslogFacility AUTHPRIV
+          AuthorizedKeysFile      .ssh/authorized_keys
+          ChallengeResponseAuthentication no
+          GSSAPIAuthentication yes
+          GSSAPICleanupCredentials no
+          UsePAM yes
+          X11Forwarding yes
+          PrintMotd no
+          ClientAliveInterval 180
+          AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY LC_MESSAGES
+          AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+          AcceptEnv LC_IDENTIFICATION LC_ALL LANGUAGE
+          AcceptEnv XMODIFIERS
+          Subsystem       sftp    /usr/libexec/openssh/sftp-server
+          ## Changed options
+          #PermitRootLogin no
+          PermitRootLogin yes
+          #PasswordAuthentication no
+          PasswordAuthentication yes
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: "fastvm-rhcos"
