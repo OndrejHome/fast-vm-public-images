@@ -1,6 +1,4 @@
-#version=DEVEL
-# System authorization information
-auth --enableshadow --passalgo=sha512
+#version=RHEL8
 # Install OS instead of upgrade
 install
 # Use CDROM installation media
@@ -32,28 +30,14 @@ clearpart --none --initlabel
 # Disk partitioning information
 part pv.1 --fstype="lvmpv" --ondisk=sda --size=1 --grow
 part /boot --fstype="xfs" --ondisk=sda --size=500
-volgroup c7vg --pesize=4096 pv.1
-logvol swap  --fstype="swap" --size=256 --name=swap_lv --vgname=c7vg
-logvol /  --fstype="xfs" --size=5000 --name=root_lv --vgname=c7vg
+volgroup c8vg --pesize=4096 pv.1
+logvol swap  --fstype="swap" --size=256 --name=swap_lv --vgname=c8vg
+logvol /  --fstype="xfs" --size=5000 --name=root_lv --vgname=c8vg
 
 %packages
 @^graphical-server-environment
-@base
-@core
-@desktop-debugging
-@dial-up
-@fonts
-@gnome-desktop
-@guest-agents
-@guest-desktop-agents
-@hardware-monitoring
-@input-methods
-@internet-browser
-@multimedia
-@print-client
-@x11
-chrony
 kexec-tools
+
 %end
 
 %addon com_redhat_kdump --enable --reserve-mb='128M'
