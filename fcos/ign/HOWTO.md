@@ -20,6 +20,14 @@ At this point image is a converted QEMU qcow2.xz image with basic Ignition file.
   [__][inf] importing image empty into /dev/xxx/fastvm-fcos32.200601
   ...
   ~~~
+  ~~~
+  # qemu-img info fedora-coreos-34.20210725.3.0-qemu.x86_64.qcow2 |grep 'virtual size'
+  virtual size: 10 GiB (10737418240 bytes)
+  # fast-vm-image import_custom 10 fcos34.210725 empty ../xml/fcos-34.xml
+  ...
+  [__][inf] importing image empty into /dev/xxx/fastvm-fcos34.210725
+  ...
+  ~~~
 
 3. Convert image from QCOW2 to RAW and store it in empty fast-vm image device. NOTE: image will allocate 100% of image size and next steps will remove empty space from there.
   ~~~
@@ -33,11 +41,37 @@ At this point image is a converted QEMU qcow2.xz image with basic Ignition file.
 
   ~~~
 
-4. Modify the image to include the basic Ignition file from this repository
+4. Determine location of `/boot` and modify the image to include the basic Ignition file from this repository
+  ~~~
+  # LIBGUESTFS_BACKEND=direct guestfish -a /dev/xxx/fastvm-fcos32.200629 << EOF
+  run
+  list-filesystems
+  EOF
+  /dev/sda1: ext4       <------
+  /dev/sda2: vfat
+  /dev/sda3: unknown
+  /dev/sda4: xfs
+  ~~~
   ~~~
   # LIBGUESTFS_BACKEND=direct guestfish -a /dev/xxx/fastvm-fcos32.200601 -m /dev/sda1 << EOF
   mkdir /ignition
   copy-in fcos-32/config.ign /ignition
+  EOF
+  ~~~
+  ~~~
+  # LIBGUESTFS_BACKEND=direct guestfish -a /dev/xxx/fastvm-fcos34.210725 << EOF
+  run
+  list-filesystems
+  EOF
+  /dev/sda1: unknown
+  /dev/sda2: vfat
+  /dev/sda3: ext4       <------
+  /dev/sda4: xfs
+  ~~~
+  ~~~
+  # LIBGUESTFS_BACKEND=direct guestfish -a /dev/xxx/fastvm-fcos34.210725 -m /dev/sda3 << EOF
+  mkdir /ignition
+  copy-in fcos-34/config.ign /ignition
   EOF
   ~~~
 
