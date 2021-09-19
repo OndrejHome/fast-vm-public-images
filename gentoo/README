@@ -75,3 +75,6 @@ gentoo201007s       | systemd  | 20201007T214504Z | 20201011                 | g
 gentoo201007o       | openrc   | 20201007T214504Z | 20201011                 | gentoo-20201007T214504Z-variables-openrc.sh
 gentoo201206s       | systemd  | 20201206T214503Z | 20201212                 | gentoo-20201206T214503Z-variables-systemd.sh
 gentoo201206o       | openrc   | 20201206T214503Z | 20201212                 | gentoo-20201206T214503Z-variables-openrc.sh
+=== 2021
+gentoo210905s       | systemd  | 20210905T170549Z | 20210912                 | gentoo-20210905T170549Z-variables-systemd.sh
+gentoo210905o       | openrc   | 20210905T170549Z | 20210912                 | gentoo-20210905T170549Z-variables-openrc.sh
