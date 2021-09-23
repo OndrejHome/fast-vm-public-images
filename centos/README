@@ -14,8 +14,9 @@
   - CentOS 5.0 - 6.2 - IDE drive (lack of virtio SCSI support in OS)
   - CentOS 5.11 - lsisas1078 (megaraid) SCSI constroler with SCSI drive
   - CentOS 6.3 - 8.0 - SCSI drive using virtio SCSI controller (supports TRIM)
+  - CentOS 8/9 Stream - SCSI drive using virtio SCSI controller (supports TRIM)
 ## Drive layout
-- 10 GB drive
+- 6 GB drive
 (non-UEFI version)
   - 500MB /boot (1st partition)
   - LVM name (cXvg, where X is 5,6 or 7 according to CentOS major version)
@@ -68,3 +69,7 @@ To import profile, make sure that you first imported some centos-7.X image and t
   # fast-vm import_profile centos-ext-7.X centos-7.X https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/centos/xml/centos-ext-7.0-current.xml https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/centos/hacks/6g_centos-ext-7-hacks.sh
 To create fast-vm VM with this configuration use the profile name as shown below
   # fast-vm create centos-ext-7.X XX
+
+== CentOS 9 Stream ==
+- requires appliance capable of mounting the XFS filesystem produced by kernel in CentOS stream
+  - appliance with this capability based on Fedora 34 (`appliance-1.45.7.tar.xz`) can be downloaded from https://kr.famera.cz/fastvm-images/appliance-1.45.7.tar.xz
