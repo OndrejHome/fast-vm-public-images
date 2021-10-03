@@ -25,7 +25,7 @@
     - 256MB swap_lv
     - 4992MB root_lv
     - rest is free space on VG r5vg
-(RHEL 6,7,8 non-UEFI version)
+(RHEL 6,7,8,9 non-UEFI version)
   - 500MB /boot (1st partition)
   - LVM name (rXvg, where X is 5, 6 or 7, according to RHEL major version)
     - 256MB swap_lv
@@ -60,6 +60,15 @@
  == kickstart KNOWN ISSUES ==
  RHEL 6.3 installer is complaining about 'unsupported hardware' and needs manual step to continue
  RHEL 6.0 installer is trying to get IP from DHCP even if it should do that and needs manual step to continue
+
+== RHEL 9.X libguestfs requirements ==
+- same as with RHEL 8.X there seems to be changes to XFS default options that requires newer appliance
+- you can use the below steps to update fast-vm libguestfs appliance to verison that supports this XFS filesystem
+= EL9-compatible libguestfs appliance
+  # rm -rf /var/lib/fast-vm/appliance
+  # wget http://ftp.linux.cz/pub/linux/people/ondrej_famera/fastvm-images/appliance-1.45.7.tar.xz
+  # tar xvf appliance-1.45.7.tar.xz -C /var/lib/fast-vm
+  # rm -f appliance-1.45.7.tar.xz
 
 == RHEL 7 ext profiles
 For fast-vm hypervisors that have configured 'system-bridge' software bridge as
