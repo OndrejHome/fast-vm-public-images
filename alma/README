@@ -19,3 +19,8 @@
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG aXvg
+
+== Alma 8.X GUI ==
+- these images are installed with 'graphical-server-environment' package set and activates graphical login
+- XML for this images uses 2GB or RAM and includes graphic card for graphical output
+
