@@ -1,0 +1,8 @@
+== Amazon Linux 2
+## Login information
+# user: root
+# pass: testtest
+- additionally login with user 'ec2-user' and password 'testtest' is enabled
+## System details
+Repackeged version of KVM image from https://cdn.amazonlinux.com/os-images/latest/kvm/amzn2-kvm-2.0.xxxxxxxx.0-x86_64.xfs.gpt.qcow2
+Only changes are done via hacks file.
