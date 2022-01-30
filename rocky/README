@@ -1,0 +1,21 @@
+== Rcoky Linux
+## Login information
+# user: root
+# pass: testtest
+- SSH enabled on boot with root login
+## System details
+- emulated Intel 6300ESB WatchDog
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- systems installed using minimal option (check *.ks file for details)
+- system would be running for the first time after installation
+- SCSI drive using virtio SCSI controller (supports TRIM)
+## Drive layout
+- 6 GB drive
+(Rocky 8 non-UEFI version)
+  - 500MB /boot (1st partition)
+  - LVM name (rlXvg, where X is 8, according to RHEL major version)
+    - 256MB swap_lv
+    - 5000MB root_lv
+    - rest is free space on VG rlXvg
