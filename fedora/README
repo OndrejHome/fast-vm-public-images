@@ -24,3 +24,8 @@
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG fXX
+- 6 GB drive (from Fedora 36)
+  - 512MB /boot (1st partition)
+  - LVM name (fXX, where XX is Fedora release number )
+    - 5000MB root_lv
+    - rest is free space on VG fXX
