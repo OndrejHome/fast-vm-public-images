@@ -8,7 +8,6 @@
 - no graphic card
 - serial console configured for system and grub
 - hostname configured according to VM_NAME from fast-vm
-- [!!] system installd by hand with 'Server' profile (minimal package selection)
 - system would be running for the first time after installation
 ## Drive layout
 - 6 GB drive

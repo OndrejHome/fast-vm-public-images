@@ -18,4 +18,9 @@ sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
 # change timezone of machine to match hypervisor
 sh 'rm -f /etc/localtime'
 sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
+# make first nic to be detected as eth0 (remove installation nic config)
+sh 'rm -f /etc/udev/rules.d/70-persistent-net.rules'
+# FIXME remove quiet boot option
+sh 'sed -i "s/quiet//" /boot/grub2/grub.cfg'
+sh 'sed -i "s/quiet//" /etc/default/grub'
 EOF
