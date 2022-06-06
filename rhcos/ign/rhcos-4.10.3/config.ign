@@ -1,0 +1,32 @@
+{
+  "ignition": {
+    "version": "3.0.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "root",
+        "passwordHash": "$6$djBl8KLBTHWtKipv$R.WDr6ukxN450H9GASQPPxJ5ItKdsJpzx9ZM7nFfAJL4n0BThEMAOEMzyseiHdIsTlC0gZr9FiKeSG7JlwEtR."
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "overwrite": true,
+        "path": "/etc/ssh/sshd_config",
+        "contents": {
+          "source": "data:,%23%23%20Original%20option%20provided%20in%20RHCOS-4.6.1%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_rsa_key%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_ecdsa_key%0AHostKey%20%2Fetc%2Fssh%2Fssh_host_ed25519_key%0ASyslogFacility%20AUTHPRIV%0AAuthorizedKeysFile%20%20%20%20%20%20.ssh%2Fauthorized_keys%0AChallengeResponseAuthentication%20no%0AGSSAPIAuthentication%20yes%0AGSSAPICleanupCredentials%20no%0AUsePAM%20yes%0AX11Forwarding%20yes%0APrintMotd%20no%0AClientAliveInterval%20180%0AAcceptEnv%20LANG%20LC_CTYPE%20LC_NUMERIC%20LC_TIME%20LC_COLLATE%20LC_MONETARY%20LC_MESSAGES%0AAcceptEnv%20LC_PAPER%20LC_NAME%20LC_ADDRESS%20LC_TELEPHONE%20LC_MEASUREMENT%0AAcceptEnv%20LC_IDENTIFICATION%20LC_ALL%20LANGUAGE%0AAcceptEnv%20XMODIFIERS%0ASubsystem%20%20%20%20%20%20%20sftp%20%20%20%20%2Fusr%2Flibexec%2Fopenssh%2Fsftp-server%0A%23%23%20Changed%20options%0A%23PermitRootLogin%20no%0APermitRootLogin%20yes%0A%23PasswordAuthentication%20no%0APasswordAuthentication%20yes%0A"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/hostname",
+        "contents": {
+          "source": "data:,fastvm-rhcos"
+        },
+        "mode": 420
+      }
+    ]
+  }
+}

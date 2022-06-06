@@ -42,6 +42,7 @@ At this point image is a converted QEMU qcow2.xz image with basic Ignition file.
   copy-in rhcos-4.4.3/config.ign /ignition
   EOF
   ~~~
+  NOTE: Newer (4.10.x) images should use `sda3` instead of `sda1`
 
 5. (1/2) sparsify image: use `fast-vm-image compact` to cleanup free space on filesystems. 
 NOTE1: during compact you will be asked for password of `/dev/sda4`. You can ignore this and provide anything as this space will not be compacted.
@@ -69,6 +70,7 @@ NOTE2: There is RFE to add support for LUKS into virt-sparsify - [Bug 1791353 - 
   # fast-vm-image list|grep rhcos-4.4.3
   rhcos-4.4.3             16g( 18.50%) |missing  no hack files|ok       no hack files|
   ~~~
+  NOTE: Newer version of `blkdiscard` may require also option `-f` to be passed in order to remove data.
 
 7. Export image and generate checksums for it.
   ~~~
