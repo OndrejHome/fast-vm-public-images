@@ -1,4 +1,4 @@
-== Rcoky Linux
+== Rocky Linux
 ## Login information
 # user: root
 # pass: testtest
@@ -13,9 +13,9 @@
 - SCSI drive using virtio SCSI controller (supports TRIM)
 ## Drive layout
 - 6 GB drive
-(Rocky 8 non-UEFI version)
+(Rocky 8/9 non-UEFI version)
   - 500MB /boot (1st partition)
-  - LVM name (rlXvg, where X is 8, according to RHEL major version)
+  - LVM name (rlXvg, where X is 8/9, according to RHEL major version)
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG rlXvg
