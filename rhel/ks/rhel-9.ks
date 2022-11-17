@@ -40,7 +40,7 @@ ignoredisk --only-use=sda
 # Partition clearing information
 clearpart --none --initlabel
 # Disk partitioning information
-part /boot --fstype="xfs" --ondisk=sda --size=500
+part /boot --fstype="xfs" --ondisk=sda --size=512
 part pv.1 --fstype="lvmpv" --ondisk=sda --size=1 --grow
 volgroup r9vg --pesize=4096 pv.1
 logvol / --fstype="xfs" --size=5000 --name=root_lv --vgname=r9vg
