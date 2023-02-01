@@ -19,6 +19,13 @@
     - 256MB swap_lv
     - 5000MB root_lv
     - rest is free space on VG aXvg
+(Alma 8/9 UEFI version)
+  - 512MB /boot (1st partition)
+  - 200MB /boot/efi (2nd partition)
+  - LVM name (aXvg, where X is 8/9, according to RHEL major version)
+    - 256MB swap_lv
+    - 5000MB root_lv
+    - rest is free space on VG aXvg
 
 == Alma 8.X GUI ==
 - these images are installed with 'graphical-server-environment' package set and activates graphical login
