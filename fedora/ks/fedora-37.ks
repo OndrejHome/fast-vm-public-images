@@ -29,7 +29,11 @@ logvol / --fstype="xfs" --size=5000 --name=root_lv --vgname=f37
 
 %packages
 @^custom-environment
-
+-linux-firmware-whence
+-linux-firmware
+-amd-gpu-firmware
+-intel-gpu-firmware
+-nvidia-gpu-firmware
 %end
 
 %post --nochroot

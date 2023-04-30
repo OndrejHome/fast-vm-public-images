@@ -28,7 +28,15 @@ logvol / --fstype="xfs" --size=5000 --name=root_lv --vgname=f36
 
 %packages
 @^custom-environment
-
+-linux-firmware-whence
+-linux-firmware
+-realtek-firmware
+-amd-gpu-firmware
+-atheros-firmware
+-brcmfmac-firmware
+-intel-gpu-firmware
+-mt7xxx-firmware
+-nvidia-gpu-firmware
 %end
 
 %post --nochroot

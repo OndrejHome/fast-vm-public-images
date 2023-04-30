@@ -11,6 +11,7 @@
 - system would be running for the first time after installation
 - disk drive connection:
   - Fedora 22+ - SCSI drive using virtio SCSI controller (supports TRIM)
+- (Fedora 36+) packages containing firmware were removed during installation to reduce size of image
 ## Drive layout
 - 10 GB drive
   - default_size /boot
