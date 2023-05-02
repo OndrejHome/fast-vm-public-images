@@ -26,7 +26,20 @@ cdrom
 
 %packages
 @^minimal-environment
-
+-linux-firmware-whence
+-linux-firmware
+-iwl7260-firmware
+-iwl6050-firmware
+-iwl6000g2a-firmware
+-iwl5150-firmware
+-iwl5000-firmware
+-iwl3160-firmware
+-iwl2030-firmware
+-iwl2000-firmware
+-iwl135-firmware
+-iwl105-firmware
+-iwl1000-firmware
+-iwl100-firmware
 %end
 
 firstboot --disable
