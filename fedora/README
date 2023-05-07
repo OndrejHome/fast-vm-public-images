@@ -30,3 +30,9 @@
   - LVM name (fXX, where XX is Fedora release number )
     - 5000MB root_lv
     - rest is free space on VG fXX
+- (UEFI version)
+  - 512MB /boot (1st partition)
+  - 200MB /boot/efi (2nd partition)
+  - LVM name (fXX, where XX is Fedora release number )
+    - 5000MB root_lv
+    - rest is free space on VG fXX
