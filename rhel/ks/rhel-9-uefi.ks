@@ -26,7 +26,9 @@ cdrom
 
 %packages
 @^minimal-environment
-
+-linux-firmware-whence
+-linux-firmware
+-iwl*-firmware
 %end
 
 firstboot --disable
