@@ -1,8 +1,4 @@
 #version=DEVEL
-# System authorization information
-auth --enableshadow --passalgo=sha512
-# Install OS instead of upgrade
-install
 # Use CDROM installation media
 cdrom
 # Use text mode install
@@ -39,14 +35,14 @@ logvol /  --fstype="xfs" --size=5000 --name=root_lv --vgname=a8vg
 %packages
 @^minimal-environment
 kexec-tools
-
+-iwl*-firmware
 %end
 
 %addon com_redhat_kdump --enable --reserve-mb='192M'
 
 %end
 
-%post --nochroot
-/sbin/fstrim /mnt/sysimage
-/sbin/fstrim /mnt/sysimage/boot
+%post --log=/root/ks-post.log
+dnf remove -y linux-firmware
+/sbin/fstrim -a -v
 %end

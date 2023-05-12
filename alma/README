@@ -11,7 +11,7 @@
 - systems installed using minimal option (check *.ks file for details)
 - system would be running for the first time after installation
 - SCSI drive using virtio SCSI controller (supports TRIM)
-- Alma 9.0+ - remove firmware packages to reduce size of image
+- Alma 8.3+ - remove firmware packages to reduce size of image
 ## Drive layout
 - 6 GB drive
 (Alma 8/9 non-UEFI version)
