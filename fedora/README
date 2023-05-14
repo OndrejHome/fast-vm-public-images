@@ -36,3 +36,13 @@
   - LVM name (fXX, where XX is Fedora release number )
     - 5000MB root_lv
     - rest is free space on VG fXX
+
+
+== EXPERIMENTAL (aarch64 UEFI version)
+- disk layout
+  - 512MB /boot (1st partition)
+  - 200MB /boot/efi (2nd partition)
+  - LVM name (fXX, where XX is Fedora release number )
+    - 5000MB root_lv
+    - rest is free space on VG fXX
+- installed running on Odroid-M1 (Cortex A-55 cores)

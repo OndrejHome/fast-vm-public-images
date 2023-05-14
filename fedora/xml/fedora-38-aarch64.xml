@@ -1,0 +1,49 @@
+<domain type='kvm'>
+  <name>VM_NAME</name>
+  <memory unit='KiB'>1048576</memory>
+  <currentMemory unit='KiB'>1048576</currentMemory>
+  <vcpu>2</vcpu>
+  <os>
+    <type arch='aarch64' machine='virt-7.2'>hvm</type>
+    <loader readonly='yes' type='pflash'>/usr/share/qemu/edk2-aarch64-code.fd</loader>
+  </os>
+  <features>
+    <acpi/>
+    <gic version='3'/>
+  </features>
+  <cpu mode='host-passthrough' check='none'/>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>destroy</on_crash>
+  <devices>
+    <disk type='block' device='disk'>
+      <driver name='qemu' type='raw' cache='none' io='native' discard='unmap'/>
+      <source dev='/dev/THINPOOL_VG/VM_NAME'/>
+      <target dev='sda' bus='scsi'/>
+    </disk>
+    <disk type='block' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <target dev='sdc' bus='scsi'/>
+      <readonly/>
+    </disk>
+    <controller type='usb' index='0' model='qemu-xhci'/>
+    <controller type='pci' index='0' model='pcie-root'/>
+    <controller type='scsi' index='0' model='virtio-scsi'/>
+    <interface type='network'>
+      <source network='LIBVIRT_NETWORK'/>
+      <model type='virtio'/>
+    </interface>
+    <serial type='pty'>
+      <target port='0'/>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+    <memballoon model='virtio'/>
+    <rng model='virtio'>
+      <backend model='random'>/dev/random</backend>
+    </rng>
+  </devices>
+</domain>
+
