@@ -9,7 +9,7 @@ virt-install \
 --name rhel-5-fastvm-install \
 --ram 1024 --cpu host-model-only --vcpus 2 \
 --network network=default,model=e1000,link_state=down,mac=52:54:00:00:be:ef \
---os-type=linux  --os-variant=rhel5.0 \
+--os-variant=rhel5.0 \
 --disk path=$BASE_IMAGE_LV,bus=ide,format=raw \
 --location $ISO_LOCATION \
 --extra-args="ks=file:/$(basename $KICKSTART) nonet text console=ttyS0,115200n8" \

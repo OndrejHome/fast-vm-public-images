@@ -9,7 +9,7 @@ virt-install \
 --name rhel-6-fastvm-install \
 --ram 1024 --cpu host-model-only --vcpus 2 \
 --network network=default,model=virtio,link_state=down,mac=52:54:00:00:be:ef \
---os-type=linux  --os-variant=rhel6.0 \
+--os-variant=rhel6.0 \
 --disk path=$BASE_IMAGE_LV,bus=scsi,discard=unmap,format=raw \
 --controller scsi,model=lsilogic \
 --location $ISO_LOCATION \
