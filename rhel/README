@@ -17,7 +17,7 @@
   - RHEL 5.0 - 5.5, 5.7 - 5.11, 6.1, 6.2 - lsisas1078 (megaraid) SCSI constroler with SCSI drive
   - (IDE) RHEL 5.0 - 6.2 - alternative images using IDE controller
   - RHEL 6.3 - 8.0 - SCSI drive using virtio SCSI controller (supports TRIM)
-- RHEL 9.0+ - remove firmware packages to reduce size of image
+- RHEL 8.0+ - remove firmware packages to reduce size of image
 ## Drive layout
 - 6 GB drive
 (RHEL 5)
