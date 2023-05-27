@@ -26,7 +26,7 @@ timezone=$(readlink /etc/localtime | sed 's/^.*zoneinfo\/\(.*\)$/\1/')
 guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/a8vg/root_lv -m /dev/sda1:/boot --selinux <<EOF
 # move the config from interface used during install to one assigned by libvirt as it may change (sometimes)
 # if there was no change this will report error that can be safely ignored
--sh 'mv /etc/sysconfig/network-scripts/ifcfg-ens* /etc/sysconfig/network-scripts/ifcfg-ens${net_card}'
+-sh 'mv /etc/sysconfig/network-scripts/ifcfg-en* /etc/sysconfig/network-scripts/ifcfg-ens${net_card}'
 # enable ensX adapter on boot and rename interface if needed
 sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/; s/NAME=.*/NAME=ens${net_card}/; s/DEVICE=.*/DEVICE=ens${net_card}/" /etc/sysconfig/network-scripts/ifcfg-ens${net_card}'
 # change the hostname of machine
