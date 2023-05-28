@@ -11,7 +11,7 @@
 - systems installed using minimal option (check *.ks file for details)
 - system would be running for the first time after installation
 - SCSI drive using virtio SCSI controller (supports TRIM)
-- Rocky 9.0+ - remove firmware packages to reduce size of image
+- Rocky 8.4+ - remove firmware packages to reduce size of image
 ## Drive layout
 - 6 GB drive
 (Rocky 8/9 non-UEFI version)
