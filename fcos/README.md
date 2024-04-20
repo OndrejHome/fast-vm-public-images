@@ -7,3 +7,4 @@
   - password login for 'root' via SSH
   - root password
   - generic hostname 'fastvm-fcos'
+  - config for zincati to disable auto-updates
