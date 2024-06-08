@@ -1,0 +1,17 @@
+[global]
+keyboard = "en-us"
+country = "gb"
+fqdn = "fast-vm-pve.local"
+mailto = "root@localhost"
+timezone = "Europe/London"
+root_password = "testtest"
+
+[network]
+source = "from-dhcp"
+
+[disk-setup]
+filesystem = "ext4"
+lvm.swapsize = 1
+lvm.maxvz = 0
+lvm.maxroot = 8
+disk_list = ['sda']
