@@ -28,13 +28,13 @@ guestfish -a "/dev/$THINPOOL_VG/$VM_NAME" -m /dev/r8vg/root_lv -m /dev/sda1:/boo
 # if there was no change this will report error that can be safely ignored
 -sh 'mv /etc/sysconfig/network-scripts/ifcfg-ens* /etc/sysconfig/network-scripts/ifcfg-ens${net_card}'
 # enable ensX adapter on boot and rename interface if needed
-sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/; s/NAME=.*/NAME=ens${net_card}/; s/DEVICE=.*/DEVICE=ens${net_card}/" /etc/sysconfig/network-scripts/ifcfg-ens${net_card}'
+-sh 'sed -i "s/ONBOOT=no/ONBOOT=yes/; s/NAME=.*/NAME=ens${net_card}/; s/DEVICE=.*/DEVICE=ens${net_card}/" /etc/sysconfig/network-scripts/ifcfg-ens${net_card}'
 # change the hostname of machine
 sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
 # change timezone of machine to match hypervisor
 sh 'rm -f /etc/localtime'
 sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/localtime
-selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-ens${net_card}
+-selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/sysconfig/network-scripts/ifcfg-ens${net_card}
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/hostname
 EOF
