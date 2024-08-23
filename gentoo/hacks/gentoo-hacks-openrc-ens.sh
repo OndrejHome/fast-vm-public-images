@@ -18,5 +18,6 @@ sh 'sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/" /etc/ssh/
 sh 'sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config'
 # enable correct network card for auto start
 - sh 'rm /etc/init.d/net.eth0'
+- sh 'rm /etc/init.d/net.'
 sh 'ln -s /etc/init.d/net.lo /etc/init.d/net.ens${net_card_slot}'
 EOF
