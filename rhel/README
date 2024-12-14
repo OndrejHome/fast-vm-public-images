@@ -82,3 +82,6 @@ To import profile, make sure that you first imported some rhel-7.X image and the
   # fast-vm import_profile rhel-ext-7.X rhel-7.X https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/rhel/xml/rhel-ext-7.0-current.xml https://raw.githubusercontent.com/OndrejHome/fast-vm-public-images/master/rhel/hacks/6g_rhel-ext-7-hacks.sh
 To create fast-vm VM with this configuration use the profile name as shown below
   # fast-vm create rhel-ext-7.X XX
+
+== RHEL 10 ssh PerSourcePenalties
+- hack files for RHEL 10 disabled the enabled-by-default PerSourcePenalties option by creating file /etc/ssh/sshd_config.d/60-disable-PerSourcePenalties.conf - without this sshd often blocks ssh-keyscan used by 'fast-vm keydist' and 'fast-vm ssh' as it deems it too agressive
