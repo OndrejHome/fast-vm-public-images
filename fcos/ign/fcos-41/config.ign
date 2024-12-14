@@ -1,0 +1,41 @@
+{
+  "ignition": {
+    "version": "3.3.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "root",
+        "passwordHash": "$6$djBl8KLBTHWtKipv$R.WDr6ukxN450H9GASQPPxJ5ItKdsJpzx9ZM7nFfAJL4n0BThEMAOEMzyseiHdIsTlC0gZr9FiKeSG7JlwEtR."
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/ssh/sshd_config.d/02-enable-ssh-passwords.conf",
+        "contents": {
+          "compression": "",
+          "source": "data:,PasswordAuthentication%20yes%0APermitRootLogin%20yes%0A"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/hostname",
+        "contents": {
+          "compression": "",
+          "source": "data:,fastvm-fcos"
+        },
+        "mode": 420
+      },
+      {
+        "path": "/etc/zincati/config.d/90-disable-auto-updates.toml",
+        "contents": {
+          "compression": "",
+          "source": "data:,%5Bupdates%5D%0Aenabled%20%3D%20false%0A"
+        },
+        "mode": 420
+      }
+    ]
+  }
+}
