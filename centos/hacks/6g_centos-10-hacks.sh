@@ -24,6 +24,9 @@ sh 'sed -i "s/.*/$VM_HOSTNAME/" /etc/hostname'
 # change timezone of machine to match hypervisor
 sh 'rm -f /etc/localtime'
 sh 'ln -s /usr/share/zoneinfo/$timezone /etc/localtime'
+# disable default sshd PerSourcePenalties to allow rapid ssh-keyscan
+sh 'echo "PerSourcePenalties no" > /etc/ssh/sshd_config.d/60-disable-PerSourcePenalties.conf'
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/localtime
 selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/hostname
+selinux-relabel /etc/selinux/targeted/contexts/files/file_contexts /etc/ssh/sshd_config.d/60-disable-PerSourcePenalties.conf
 EOF
