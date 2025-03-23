@@ -81,3 +81,17 @@ gentoo210905o       | openrc   | 20210905T170549Z | 20210912                 | g
 === 2022
 gentoo220710s       | systemd  | 20220710T170538Z | 20220710                 | gentoo-20220710T170538Z-variables-systemd.sh
 gentoo220710o       | openrc   | 20220710T170538Z | 20220710                 | gentoo-20220710T170538Z-variables-openrc.sh
+
+== Gentoo prebuild images
+https://www.gentoo.org/news/2025/02/20/gentoo-qcow2-images.html
+As gentoo started publishing qcow2 images intended for VMs, those can be used for fast-vm too.
+
+## Login information
+# user: root
+# pass: testtest
+## System details
+- UEFI boot
+- no graphic card
+- serial console configured for system and grub
+- hostname configured according to VM_NAME from fast-vm
+- SSH server activated and root login with password permitted, SSH PerSourcePenalties disabled
