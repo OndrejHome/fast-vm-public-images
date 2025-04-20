@@ -22,3 +22,7 @@ storage:
         inline: |
           [updates]
           enabled = false
+    - path: /etc/ssh/sshd_config.d/60-disable-PerSourcePenalties.conf
+      mode: 0644
+      contents:
+        inline: "PerSourcePenalties no"

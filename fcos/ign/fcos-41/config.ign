@@ -21,6 +21,14 @@
         "mode": 420
       },
       {
+        "path": "/etc/ssh/sshd_config.d/60-disable-PerSourcePenalties.conf",
+        "contents": {
+          "compression": "",
+          "source": "data:,PerSourcePenalties%20no"
+        },
+        "mode": 420
+      },
+      {
         "path": "/etc/hostname",
         "contents": {
           "compression": "",
