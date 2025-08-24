@@ -25,7 +25,7 @@ cleanup_vm () {
 }
 cleanup_image() {
 	echo "===== ImageBuilder === INFO deleting the IMAGE"
-	fast-vm remove_image "$1"
+	fast-vm-image remove "$1"
 	rm /tmp/dummy.xml
 }
 
@@ -55,7 +55,7 @@ if [ "$1" == 'build' ]; then
   #### MAIN TESTING
   echo "===== ImageBuilder === INFO creating empty image for build"
   touch /tmp/dummy.xml
-  out=$(fast-vm import_custom_image "$IMAGE_SIZE" "$IMAGE_NAME" empty /tmp/dummy.xml)
+  out=$(fast-vm-image import_custom "$IMAGE_SIZE" "$IMAGE_NAME" empty /tmp/dummy.xml)
   if [ "$?" != "0" ]; then
     echo "===== ImageBuilder === ERROR creating empty image: $out"
     rm /tmp/dummy.xml
