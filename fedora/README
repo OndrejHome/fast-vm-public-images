@@ -37,6 +37,8 @@
     - 5000MB root_lv
     - rest is free space on VG fXX
 
+Notes:
+- Fedora 43 fails booting into text-only installation with 1GB RAM, using 2GB
 
 == EXPERIMENTAL (aarch64 UEFI version)
 - disk layout
