@@ -38,3 +38,28 @@
     - 5GB root_lv (ext4)
     - 256MB swap_lv
     - rest is free space on VG uXXYYvg
+
+== Ubuntu Server LTS (autoinstall)
+## Login information
+# user: root
+# pass: testtest
+(additionally user 'ubuntu' with password 'testtest' is present)
+## System details
+- no graphic card
+- serial console configured for system (FIXME but not for grub)
+- hostname configured according to VM_NAME from fast-vm
+- minimal server install with 'install OpenSSH server' option enabled
+- system would be running for the first time after installation
+- disk drive connection - SCSI drive using virtio SCSI controller (supports TRIM)
+- 'linux-firmware' package was removed to significantly reduce installed image size
+   - IMPORTANT: use commands below to get this package back once system is running
+    # apt-get update
+    # apt --fix-broken install linux-firmware
+
+## Drive layout
+- 6 GB drive
+  - bios_grub partition (1MB)
+  - /boot (512MB ext4)
+  - LVM name (uXXYYvg, for. example Ubuntu 20.04 will have VG name u2004vg)
+    - 5GB root_lv (ext4)
+    - rest is free space on VG uXXYYvg

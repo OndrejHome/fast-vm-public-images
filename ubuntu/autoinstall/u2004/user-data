@@ -1,0 +1,107 @@
+#cloud-config
+# See the autoinstall documentation at:
+# https://canonical-subiquity.readthedocs-hosted.com/en/latest/reference/autoinstall-reference.html
+autoinstall:
+  apt:
+    fallback: offline-install
+  codecs:
+    install: false
+  drivers:
+    install: false
+  identity:
+    hostname: fastvm-ubuntu
+    password: $6$8VQRONKKxXFNYd9K$5k7IvYaPdunCBzJ/D9vUwEucvCJgPSl4ENvkofdwyy.yH6BcR6SqSpFso9kMRQGr5UqFYbfB6Tj0oOwxmgiZ40
+    realname: root
+    username: ubuntu
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: us
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  network:
+    ethernets: {}
+    version: 2
+  oem:
+    install: auto
+  source:
+    id: ubuntu-server-minimal
+    search_drivers: false
+  ssh:
+    allow-pw: true
+    authorized-keys: []
+    install-server: true
+  storage:
+    config:
+    - ptable: gpt
+      path: /dev/sda
+      wipe: superblock-recursive
+      preserve: false
+      grub_device: true
+      id: disk-sda
+      type: disk
+    - device: disk-sda
+      size: 1048576
+      flag: bios_grub
+      number: 1
+      preserve: false
+      grub_device: false
+      offset: 1048576
+      id: partition-0
+      type: partition
+    - device: disk-sda
+      size: 536870912
+      wipe: superblock
+      number: 2
+      preserve: false
+      grub_device: false
+      id: partition-1
+      type: partition
+    - fstype: ext4
+      volume: partition-1
+      preserve: false
+      id: format-0
+      type: format
+    - device: disk-sda
+      #size: 5242880000
+      size: -1
+      wipe: superblock
+      number: 3
+      preserve: false
+      grub_device: false
+      offset: 537919488
+      id: partition-2
+      type: partition
+    - name: u2004vg
+      devices:
+      - partition-2
+      preserve: false
+      id: lvm_volgroup-0
+      type: lvm_volgroup
+    - name: root_lv
+      volgroup: lvm_volgroup-0
+      size: 5238685696B
+      wipe: superblock
+      preserve: false
+      path: /dev/u2004vg/root_lv
+      id: lvm_partition-0
+      type: lvm_partition
+    - fstype: ext4
+      volume: lvm_partition-0
+      preserve: false
+      id: format-1
+      type: format
+    - path: /
+      device: format-1
+      id: mount-1
+      type: mount
+    - path: /boot
+      device: format-0
+      id: mount-0
+      type: mount
+  late-commands:
+    - curtin in-target -- dpkg -r --force-depends linux-firmware
+    - curtin in-target -- fstrim -av
+  updates: security
+  version: 1
