@@ -16,3 +16,6 @@
     - 256MB swap_lv
     - 5GB root_lv
     - rest is free space on VG os15vg
+
+== OpenSUSE 16
+- compared to opensuse 15.x the opensuse 16.x is using Agama installer instead of autoyast

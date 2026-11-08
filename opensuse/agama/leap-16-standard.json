@@ -1,0 +1,110 @@
+{
+  "product": {
+    "id": "openSUSE_Leap",
+    "mode": "standard"
+  },
+  "storage": {
+    "boot": {
+      "configure": true
+    },
+    "drives": [
+      {
+        "alias": "w4GwitnldM",
+        "partitions": [
+          {
+            "delete": true,
+            "search": {
+              "ifNotFound": "skip"
+            }
+          }
+        ],
+        "search": {
+          "condition": {
+            "name": "/dev/sda"
+          },
+          "ifNotFound": "error"
+        }
+      }
+    ],
+    "mdRaids": [],
+    "volumeGroups": [
+      {
+        "logicalVolumes": [
+          {
+            "filesystem": {
+              "mountOptions": [],
+              "path": "/",
+              "reuseIfPossible": false,
+              "type": "xfs"
+            },
+            "name": "root_lv",
+            "size": {
+              "max": 5000000000,
+              "min": 5000000000
+            }
+          },
+          {
+            "filesystem": {
+              "mountOptions": [],
+              "path": "swap",
+              "reuseIfPossible": false,
+              "type": "swap"
+            },
+            "name": "swap_lv",
+            "size": {
+              "max": 256000000,
+              "min": 256000000
+            }
+          },
+          {
+            "delete": true,
+            "search": {
+              "ifNotFound": "skip"
+            }
+          }
+        ],
+        "name": "os16vg",
+        "physicalVolumes": [
+          {
+            "generate": {
+              "spacePolicy": "useAvailable",
+              "targetDevices": [
+                "w4GwitnldM"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "software": {
+    "patterns": ["minimal_base", "selinux"],
+    "onlyRequired": true
+  },
+  "hostname": {
+    "transient": "fastvm-opensuse"
+  },
+  "scripts": {
+    "post": [
+      {
+        "name": "enable-sshd.sh",
+        "content": "#!/bin/bash\nsystemctl enable sshd.service"
+      },
+      {
+        "name": "fstrim.sh",
+        "content": "#!/bin/bash\nfstrim -a"
+      }
+    ]
+  },
+  "user": {
+    "fullName": "root",
+    "password": "testtest",
+    "hashedPassword": false,
+    "userName": "root",
+    "sshPublicKeys": []
+  },
+  "root": {
+    "password": "testtest",
+    "hashedPassword": false
+  }
+}
