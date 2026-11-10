@@ -1,7 +1,32 @@
 {
+  "hostname": {
+    "transient": "fastvm-opensuse"
+  },
   "product": {
-    "id": "openSUSE_Leap",
-    "mode": "standard"
+    "id": "openSUSE_Leap"
+  },
+  "root": {
+    "hashedPassword": false,
+    "password": "testtest"
+  },
+  "scripts": {
+    "post": [
+      {
+        "content": "#!/bin/bash\nsystemctl enable sshd.service",
+        "name": "enable-sshd.sh"
+      },
+      {
+        "content": "#!/bin/bash\nfstrim -a",
+        "name": "fstrim.sh"
+      }
+    ]
+  },
+  "software": {
+    "onlyRequired": true,
+    "patterns": [
+      "minimal_base",
+      "selinux"
+    ]
   },
   "storage": {
     "boot": {
@@ -9,7 +34,7 @@
     },
     "drives": [
       {
-        "alias": "w4GwitnldM",
+        "alias": "LTu9QaeyQh",
         "partitions": [
           {
             "delete": true,
@@ -55,56 +80,17 @@
               "max": 256000000,
               "min": 256000000
             }
-          },
-          {
-            "delete": true,
-            "search": {
-              "ifNotFound": "skip"
-            }
           }
         ],
         "name": "os16vg",
         "physicalVolumes": [
           {
-            "generate": {
-              "spacePolicy": "useAvailable",
-              "targetDevices": [
-                "w4GwitnldM"
-              ]
-            }
+            "generate": [
+              "LTu9QaeyQh"
+            ]
           }
         ]
       }
     ]
-  },
-  "software": {
-    "patterns": ["minimal_base", "selinux"],
-    "onlyRequired": true
-  },
-  "hostname": {
-    "transient": "fastvm-opensuse"
-  },
-  "scripts": {
-    "post": [
-      {
-        "name": "enable-sshd.sh",
-        "content": "#!/bin/bash\nsystemctl enable sshd.service"
-      },
-      {
-        "name": "fstrim.sh",
-        "content": "#!/bin/bash\nfstrim -a"
-      }
-    ]
-  },
-  "user": {
-    "fullName": "root",
-    "password": "testtest",
-    "hashedPassword": false,
-    "userName": "root",
-    "sshPublicKeys": []
-  },
-  "root": {
-    "password": "testtest",
-    "hashedPassword": false
   }
 }
