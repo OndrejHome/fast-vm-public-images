@@ -68,3 +68,25 @@ ISO_DIR="/mnt/iso_storage/almalinux"
 ../image_builder-v2.sh test alma-10.2v2-uefi 44 xml/alma-8.7-current-uefi-nvme.xml hacks/6g_alma-10-hacks-uefi.sh ../image_builder_test_script-v2.sh 30 | tee -a 2_test-alma-10.2v2-uefi-nvme.log
 
 # =====
+
+# AlmaLinux 10.3 BIOS
+
+../image_builder-v2.sh build alma-10.3 6 ks/virt-install-alma-9-nvme.sh "$ISO_DIR/AlmaLinux-10.3-x86_64-dvd.iso" ks/alma-10.ks |tee 1_build-alma-10.3.log
+../image_builder-v2.sh test alma-10.3 44 xml/alma-8.3-current.xml hacks/6g_alma-10-hacks.sh ../image_builder_test_script-v2.sh 30| tee -a 2_test-alma-10.3.log
+../image_builder-v2.sh test alma-10.3 44 xml/alma-8.3-current-nvme.xml hacks/6g_alma-10-hacks.sh ../image_builder_test_script-v2.sh 30| tee -a 2_test-alma-10.3-nvme.log
+
+../image_builder-v2.sh build alma-10.3v2 6 ks/virt-install-alma-9-nvme.sh "$ISO_DIR/AlmaLinux-10.3-x86_64_v2-dvd.iso" ks/alma-10.ks |tee 1_build-alma-10.3v2.log
+../image_builder-v2.sh test alma-10.3v2 44 xml/alma-8.3-current.xml hacks/6g_alma-10-hacks.sh ../image_builder_test_script-v2.sh 30| tee -a 2_test-alma-10.3v2.log
+../image_builder-v2.sh test alma-10.3v2 44 xml/alma-8.3-current-nvme.xml hacks/6g_alma-10-hacks.sh ../image_builder_test_script-v2.sh 30| tee -a 2_test-alma-10.3v2-nvme.log
+
+# AlmaLinux 10.3 UEFI
+
+../image_builder-v2.sh build alma-10.3-uefi 6 ks/virt-install-alma-10-uefi-nvme.sh "$ISO_DIR/AlmaLinux-10.3-x86_64-dvd.iso" ks/alma-10-uefi.ks |tee 1_build-alma-10.3-uefi.log
+../image_builder-v2.sh test alma-10.3-uefi 44 xml/alma-8.7-current-uefi.xml hacks/6g_alma-10-hacks-uefi.sh ../image_builder_test_script-v2.sh 30 | tee -a 2_test-alma-10.3-uefi.log
+../image_builder-v2.sh test alma-10.3-uefi 44 xml/alma-8.7-current-uefi-nvme.xml hacks/6g_alma-10-hacks-uefi.sh ../image_builder_test_script-v2.sh 30 | tee -a 2_test-alma-10.3-uefi-nvme.log
+
+../image_builder-v2.sh build alma-10.3v2-uefi 6 ks/virt-install-alma-10-uefi-nvme.sh "$ISO_DIR/AlmaLinux-10.3-x86_64_v2-dvd.iso" ks/alma-10-uefi.ks |tee 1_build-alma-10.3v2-uefi.log
+../image_builder-v2.sh test alma-10.3v2-uefi 44 xml/alma-8.7-current-uefi.xml hacks/6g_alma-10-hacks-uefi.sh ../image_builder_test_script-v2.sh 30 | tee -a 2_test-alma-10.3v2-uefi.log
+../image_builder-v2.sh test alma-10.3v2-uefi 44 xml/alma-8.7-current-uefi-nvme.xml hacks/6g_alma-10-hacks-uefi.sh ../image_builder_test_script-v2.sh 30 | tee -a 2_test-alma-10.3v2-uefi-nvme.log
+
+# =====
